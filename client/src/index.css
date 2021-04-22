@@ -15,8 +15,12 @@ code {
 }
 
 .App {
-  min-width: 100vw;
-  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.App::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -36,3 +40,9 @@ button {
 
 /* ----------------- Header ---------------- */
 @import url("./components/headers/header.css");
+
+/* ----------------- Products -------------- */
+@import url("./components/mainpage/products/product.css");
+
+/* ----------------- Detail Product ----------- */
+@import url("./components/mainpage/detailProduct/detailProduct.css");

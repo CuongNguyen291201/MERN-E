@@ -7,14 +7,20 @@ import Register from './auth/Register';
 import Cart from './cart/Cart';
 import NotFound from './utils/not-found/NotFound';
 import Banner from '../banner/Banner';
+import DetailProduct from './detailProduct/DetailProduct';
+
 
 const Pages = () => {
   return (
     <Switch>
       <Route path="/" exact component={Banner} />
+
       <Route path="/products" exact component={Products} />
+      <Route path="/detail/:id" exact component={DetailProduct} />
+      
       <Route path="/login" exact component={Login} />
       <Route path="/register" exact component={Register} />
+      
       <Route path="/cart" exact component={Cart} />
 
       <Route path="#" exact component={NotFound} />
