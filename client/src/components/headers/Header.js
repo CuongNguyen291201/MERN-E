@@ -9,6 +9,8 @@ import Logo from './icon/camera.png';
 
 const Header = () => {
   const state = useContext(GlobalState);
+  const [isLogged, setIsLogged] = state.userAPI.isLogged;
+  const [isAdmin, setIsAdmin] = state.userAPI.isAdmin;
 
   return (
     <header>
