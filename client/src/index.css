@@ -46,3 +46,6 @@ button {
 
 /* ----------------- Detail Product ----------- */
 @import url("./components/mainpage/detailProduct/detailProduct.css");
+
+/* ----------------- Auth ----------------- */
+@import url("./components/mainpage/auth/auth.css");

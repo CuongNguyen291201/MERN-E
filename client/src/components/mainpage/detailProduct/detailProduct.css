@@ -10,6 +10,17 @@
   box-shadow: 0 0 15px #ddd;
 }
 
+.related-products {
+  margin: 0 auto;
+  overflow: hidden;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-size: 150%;
+  box-shadow: 0 0 15px #ddd;
+}
+
 .detail img {
   max-width: 500px;
   width: 100%;
@@ -39,4 +50,10 @@
 
 .box-detail .cart {
   background: #333;
+  color: white;
+  padding: 10px 25px;
+  display: inline-block;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 3px;
 }
