@@ -17,7 +17,7 @@ const DetailProduct = () => {
         if (product._id === params.id) setDetailProduct(product);
       })
     }
-  }, [params.id, products])
+  }, [params, products])
 
   if (detailProduct.length === 0) return null;
   return (

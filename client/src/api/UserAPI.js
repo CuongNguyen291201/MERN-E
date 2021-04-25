@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import swal from 'sweetalert';
 import axios from 'axios';
 
 const UserAPI = (token) => {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     if (token) {
@@ -15,7 +16,6 @@ const UserAPI = (token) => {
           })
           setIsLogged(true)
           res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
-          console.log(res)
         } catch (err) {
           swal({
             title: "Error",
@@ -30,9 +30,23 @@ const UserAPI = (token) => {
     }
   }, [token])
 
+  const addCart = async (product) => {
+    if (!isLogged) return swal("Fail!", "Please login to continue buying", "error");
+
+    const check = cart.every(item => {
+      return item._id !== product._id
+    })
+    if (check) {
+      setCart([...cart, {...product, quantity: 1}])
+    } else {
+      swal("Thank you!", "This product has been added to cart!", "info");
+    }
+  } 
+
   return {
     isLogged: [isLogged, setIsLogged],
-    isAdmin: [isAdmin, setIsAdmin]
+    isAdmin: [isAdmin, setIsAdmin],
+    addCart: [cart, setCart]
   }
 }
 

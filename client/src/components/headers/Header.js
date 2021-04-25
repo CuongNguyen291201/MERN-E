@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import { GlobalState } from '../../GlobalState';
 import Menu from './icon/menu.svg';
@@ -11,6 +12,22 @@ const Header = () => {
   const state = useContext(GlobalState);
   const [isLogged, setIsLogged] = state.userAPI.isLogged;
   const [isAdmin, setIsAdmin] = state.userAPI.isAdmin;
+
+  const logoutUser = async () => {
+    await axios.get('/user/logout')
+    localStorage.removeItem('Login'); 
+    setIsLogged(false);
+    setIsAdmin(false);
+  }
+
+  const loggedRouter = () => {
+    return (
+      <>
+        <li><Link to="/">User</Link></li>
+        <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
+      </>
+    )
+  }
 
   return (
     <header>
@@ -27,8 +44,19 @@ const Header = () => {
             <li><Link to="/">Store Location</Link></li>
             <li><Link to="/">Blog</Link></li>
             <li><Link to="/">My wishlist</Link></li>
-            <li><Link to="/login">Sign in</Link></li>
-            <li><Link to="/register">Register</Link></li>
+            { isAdmin 
+              ? <li><Link to="/admin">My Admin</Link></li> 
+              : <li><Link to="/">My wishlist</Link></li>
+            }
+            {
+              isLogged 
+              ? loggedRouter()
+              : 
+              <>
+                <li><Link to="/login">Sign in</Link></li>
+                <li><Link to="/register">Register</Link></li> 
+              </>
+            }
             <li>
               <img src={Close} alt="" width="30" className="menu" />
             </li>

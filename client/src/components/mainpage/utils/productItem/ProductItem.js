@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import { GlobalState } from '../../../../GlobalState';
+
 const ProductItem = ({product}) => {
+  const state = useContext(GlobalState);
+  const addCart = state.userAPI.addCart;
+
   return (
     <div className="product_card">
       <Link to={`/detail/${product._id}`}>
@@ -14,7 +19,7 @@ const ProductItem = ({product}) => {
       </Link>
 
       <div className="row_btn">
-        <Link id="btn_buy" to='/cart'>Add to Cart</Link>
+        <Link id="btn_buy" to='#!' onClick={() => addCart(product)}>Add to Cart</Link>
       </div>
     </div>
   )
