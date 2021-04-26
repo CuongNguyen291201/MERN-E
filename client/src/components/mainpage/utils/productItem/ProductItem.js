@@ -19,7 +19,7 @@ const ProductItem = ({product}) => {
       </Link>
 
       <div className="row_btn">
-        <Link id="btn_buy" to='#!' onClick={() => addCart(product)}>Add to Cart</Link>
+        <Link id="btn_buy" to='#!' onClick={() => addCart(product)} >Add to Cart</Link>
       </div>
     </div>
   )

@@ -10,14 +10,14 @@ import Logo from './icon/camera.png';
 
 const Header = () => {
   const state = useContext(GlobalState);
-  const [isLogged, setIsLogged] = state.userAPI.isLogged;
-  const [isAdmin, setIsAdmin] = state.userAPI.isAdmin;
+  const [isLogged] = state.userAPI.isLogged;
+  const [isAdmin] = state.userAPI.isAdmin;
+  const [cart] = state.userAPI.cart;
 
   const logoutUser = async () => {
     await axios.get('/user/logout')
     localStorage.removeItem('Login'); 
-    setIsLogged(false);
-    setIsAdmin(false);
+    window.location.href = '/';
   }
 
   const loggedRouter = () => {
@@ -71,11 +71,10 @@ const Header = () => {
           <button>Search</button>
         </div>
         <div className="user">
-          <h2>Call 0987654321</h2>
           <Link to="/cart">
             <img src={Cart} alt="" width="20"/>
           </Link>
-          <span>1</span>
+          <span>{cart.length}</span>
         </div>
       </div>
 

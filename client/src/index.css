@@ -32,7 +32,6 @@ ul li {
 }
 
 button {
-  border: none;
   outline: none;
   background: transparent;
   cursor: pointer;
@@ -49,3 +48,6 @@ button {
 
 /* ----------------- Auth ----------------- */
 @import url("./components/mainpage/auth/auth.css");
+
+/* ----------------- Cart ----------------- */
+@import url("./components/mainpage/cart/cart.css");

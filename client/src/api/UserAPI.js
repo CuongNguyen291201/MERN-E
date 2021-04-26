@@ -16,6 +16,7 @@ const UserAPI = (token) => {
           })
           setIsLogged(true)
           res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
+          setCart(res.data.cart)
         } catch (err) {
           swal({
             title: "Error",
@@ -38,6 +39,9 @@ const UserAPI = (token) => {
     })
     if (check) {
       setCart([...cart, {...product, quantity: 1}])
+      await axios.patch('/user/addtocart', {cart: [...cart, {...product, quantity: 1}]}, {
+        headers: {Authorization: token}
+      })
     } else {
       swal("Thank you!", "This product has been added to cart!", "info");
     }
@@ -46,7 +50,8 @@ const UserAPI = (token) => {
   return {
     isLogged: [isLogged, setIsLogged],
     isAdmin: [isAdmin, setIsAdmin],
-    addCart: [cart, setCart]
+    cart: [cart, setCart],
+    addCart: addCart
   }
 }
 
