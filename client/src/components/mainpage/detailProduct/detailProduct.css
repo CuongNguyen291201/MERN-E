@@ -36,7 +36,7 @@
 }
 
 .box-detail h3 {
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: darkblue;
   letter-spacing: 2px;
   font-weight: 1rem;

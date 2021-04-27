@@ -43,7 +43,6 @@ const Header = () => {
           <ul>
             <li><Link to="/">Store Location</Link></li>
             <li><Link to="/">Blog</Link></li>
-            <li><Link to="/">My wishlist</Link></li>
             { isAdmin 
               ? <li><Link to="/admin">My Admin</Link></li> 
               : <li><Link to="/">My wishlist</Link></li>

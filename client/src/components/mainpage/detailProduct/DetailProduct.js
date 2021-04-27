@@ -10,6 +10,7 @@ const DetailProduct = () => {
   const state = useContext(GlobalState);
   const [products] = state.productsAPI.products;
   const [detailProduct, setDetailProduct] = useState([]);
+  const addCart = state.userAPI.addCart;
 
   useEffect(() => {
     if (params) {
@@ -29,7 +30,12 @@ const DetailProduct = () => {
             <h3>{detailProduct.title}</h3>
           </div>
           <p>$ {detailProduct.price}</p>
-          <Link to="/cart" className="cart">Add to Cart</Link>
+          <Link 
+            to="/cart" className="cart"
+            onClick={() => addCart(detailProduct)}
+          >
+            Add to Cart
+          </Link>
           <p>Sold: {detailProduct.sold}</p>
           <p>Shop secure. Free Returns</p>
           <p>Share</p>

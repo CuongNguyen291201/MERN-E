@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 import { GlobalState } from '../../../GlobalState';
 import PaypalButton from './PaypalButton';
@@ -61,16 +62,27 @@ const Cart = () => {
   }
 
   const tranSuccess = async (payment) => {
-    console.log(payment)
+    const {paymentID, address} = payment;
+    await axios.post('/api/payment', {cart, paymentID, address}, {
+      headers: {Authorization: token}
+    })
+    
+
+    console.log(paymentID, address)
+    // setCart([])
+    swal("Thank you!", "You have successfully placed an order!", "success");
   }
 
   if (cart.length === 0) return <h2 style={{ textAlign: 'center', fontSize: '5rem'}}>Cart Empty</h2>
     
   return (
-    <div>
+    <div className="shopping-cart">
+      <div>
+
+      <h2>CART <small>({cart.length} propucts)</small></h2>
       {
         cart.map(product => (
-            <div className="detail cart" key={product._id}>
+          <div className="cart" key={product._id}>
               <img src={product.images.url} alt="" className="img_container" />
               <div className="box-detail">
                 <div className="row">
@@ -89,13 +101,14 @@ const Cart = () => {
             </div>
         ))
       }
+      </div>
 
       <div className="total">
         <h3>Total: ${total}</h3>
         <PaypalButton 
           total={total}
           tranSuccess={tranSuccess}
-        />
+          />
       </div>
       
     </div> 
