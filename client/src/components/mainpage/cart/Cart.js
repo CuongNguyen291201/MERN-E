@@ -21,7 +21,7 @@ const Cart = () => {
     getTotal()
   }, [cart])
 
-  const addToCart = async () => {
+  const addToCart = async (cart) => {
     await axios.patch('/user/addcart', {cart}, {
       headers: {Authorization: token}
     })
@@ -35,7 +35,7 @@ const Cart = () => {
     })
 
     setCart([...cart])
-    addToCart()
+    addToCart(cart)
   }
 
   const decrement = (id) => {
@@ -46,7 +46,7 @@ const Cart = () => {
     })
 
     setCart([...cart])
-    addToCart()
+    addToCart(cart)
   }
 
   const removeProduct = (id) => {
@@ -57,19 +57,19 @@ const Cart = () => {
         }
       })
       setCart([...cart])
-      addToCart()
+      addToCart(cart)
     }
   }
 
   const tranSuccess = async (payment) => {
     const {paymentID, address} = payment;
+
     await axios.post('/api/payment', {cart, paymentID, address}, {
       headers: {Authorization: token}
     })
-    
 
-    console.log(paymentID, address)
-    // setCart([])
+    setCart([])
+    addToCart([])
     swal("Thank you!", "You have successfully placed an order!", "success");
   }
 

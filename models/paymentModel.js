@@ -13,11 +13,11 @@ const paymentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  paymentID: {
-    type: String,
+  address: {
+    type: Object,
     required: true
   },
-  address: {
+  paymentID: {
     type: String,
     required: true
   },
@@ -33,5 +33,4 @@ const paymentSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('Payments', paymentSchema)
-  
+module.exports = mongoose.model("Payments", paymentSchema)

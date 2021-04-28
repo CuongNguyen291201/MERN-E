@@ -8,4 +8,3 @@ router.route('/payment')
   .post(auth, paymentController.createPayment)
 
 module.exports = router
-
