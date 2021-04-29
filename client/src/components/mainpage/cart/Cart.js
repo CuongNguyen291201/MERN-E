@@ -10,6 +10,7 @@ const Cart = () => {
   const [token] = state.token;
   const [cart, setCart] = state.userAPI.cart;
   const [total, setTotal] = useState(0);
+  const [callback, setCallback] = state.userAPI.callback;
 
   useEffect(() => {
     const getTotal = () => {
@@ -71,6 +72,7 @@ const Cart = () => {
     setCart([])
     addToCart([])
     swal("Thank you!", "You have successfully placed an order!", "success");
+    setCallback(!callback)
   }
 
   if (cart.length === 0) return <h2 style={{ textAlign: 'center', fontSize: '5rem'}}>Cart Empty</h2>

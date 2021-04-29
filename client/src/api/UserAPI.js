@@ -6,7 +6,8 @@ const UserAPI = (token) => {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [cart, setCart] = useState([]);
-  const [history, setHistory] = useState([])
+  const [history, setHistory] = useState([]);
+  const [callback, setCallback] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -43,7 +44,7 @@ const UserAPI = (token) => {
 
       getHistory()
     }
-  }, [token])
+  }, [token, callback])
 
   const addCart = async (product) => {
     if (!isLogged) return swal("Fail!", "Please login to continue buying", "error");
@@ -66,7 +67,8 @@ const UserAPI = (token) => {
     isAdmin: [isAdmin, setIsAdmin],
     cart: [cart, setCart],
     addCart: addCart,
-    history: [history, setHistory]
+    history: [history, setHistory],
+    callback: [callback, setCallback]
   }
 }
 

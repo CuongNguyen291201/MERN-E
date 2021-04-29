@@ -9,6 +9,7 @@ import NotFound from './utils/not-found/NotFound';
 import Banner from '../banner/Banner';
 import DetailProduct from './detailProduct/DetailProduct';
 import OrderHistory from './history/OrderHistory';
+import OrderDetail from './history/OrderDetail';
 
 import { GlobalState } from '../../GlobalState';
 
@@ -26,6 +27,7 @@ const Pages = () => {
       <Route path="/login" exact component={ isLogged ? NotFound : Login} />
       <Route path="/register" exact component={ isLogged ? NotFound : Register} />
       <Route path="/history" exact component={ isLogged ? OrderHistory : NotFound} />
+      <Route path="/history/:id" exact component={ isLogged ? OrderDetail : NotFound} />
       
       <Route path="/cart" exact component={Cart} />
 
