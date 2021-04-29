@@ -1,3 +1,9 @@
+:root {
+  --main-color: #027581;
+  --color-dark: #1D2231;
+  --text-grey: #8390A2;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -54,3 +60,6 @@ button {
 
 /* ----------------- History -------------- */
 @import url("./components/mainpage/history/history.css");
+
+/* ----------------- Admin ---------------- */
+@import url("./components/mainpage/admin/admin.css");

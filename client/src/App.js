@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { DataProvider } from './GlobalState';
 import Header from './components/headers/Header';
 import Pages from './components/mainpage/Pages';
-import Banner from './components/banner/Banner';
+// import Banner from './components/banner/Banner';
 
 function App() {
   return (

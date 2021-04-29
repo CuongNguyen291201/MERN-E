@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import './header.css';
 import { GlobalState } from '../../GlobalState';
 import Menu from './icon/menu.svg';
 import Close from './icon/close.svg';
