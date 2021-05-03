@@ -1,8 +1,13 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import { GlobalState } from '../../../GlobalState';
+
 const Admin = () => {
+  const state = useContext(GlobalState);
+  const [categories] = state.categoryAPI.categories;
+  const [products] = state.productsAPI.products;
+
   return (
     <div>
       <input type="checkbox" id="sidebar-toggle" />
@@ -26,13 +31,13 @@ const Admin = () => {
             <li>
               <Link to="!#">
                 <span className="ti-face-smile"></span>
-                <span>Team</span>
+                <span>Create Product</span>
               </Link>
             </li>
             <li>
-              <Link to="!#">
+              <Link to="/admin/create-category">
                 <span className="ti-agenda"></span>
-                <span>Tasks</span>
+                <span>Create Category</span>
               </Link>
             </li>
             <li>
@@ -130,86 +135,61 @@ const Admin = () => {
           <section className="recent">
             <div className="activity-grid">
               <div className="activity-card">
-                  <h3>Recent activity</h3>
+                  <h3>Products</h3>
                   
                   <div className="table-responsive">
                     <table>
                       <thead>
                         <tr>
-                          <th>Project</th>
-                          <th>Start Date</th>
-                          <th>End Date</th>
-                          <th>Team</th>
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Sold</th>
+                          <th>Image</th>
                           <th>Status</th>
                         </tr>
                       </thead>
                       <tbody>
+                        {
+                          products.map(product => (
+                            <tr key={product._id}>
+                              <td>{product.title}</td>
+                              <td>{product.price}</td>
+                              <td>{product.sold}</td>
+                              <td className="td-team">
+                                  <img src={product.images.url} alt="" className="img" />
+                              </td>
+                              <td>{product.category}</td>
+                            </tr>
+                          ))
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+
+              <div className="activity-card">
+                  <h3>Categories</h3>
+                  
+                  <div className="table-responsive">
+                    <table>
+                      <thead>
                         <tr>
-                          <td>App Development</td>
-                          <td>15 Aug, 2020</td>
-                          <td>22 Aug, 2020</td>
-                          <td className="td-team">
-                              <div className="img-1"></div>
-                              <div className="img-2"></div>
-                              <div className="img-3"></div>
-                          </td>
-                          <td>
-                            <span className="badge success">Success</span>
-                          </td>
+                          <th>Name</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
                         </tr>
-                        <tr>
-                          <td>Logo Design</td>
-                          <td>15 Aug, 2020</td>
-                          <td>22 Aug, 2020</td>
-                          <td className="td-team">
-                            <div className="img-1"></div>
-                            <div className="img-2"></div>
-                            <div className="img-3"></div>
-                          </td>
-                          <td>
-                            <span className="badge warning">Processing</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Server setup</td>
-                          <td>15 Aug, 2020</td>
-                          <td>22 Aug, 2020</td>
-                          <td className="td-team">
-                            <div className="img-1"></div>
-                            <div className="img-2"></div>
-                            <div className="img-3"></div>
-                          </td>
-                          <td>
-                            <span className="badge success">Success</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Front-end Design</td>
-                          <td>15 Aug, 2020</td>
-                          <td>22 Aug, 2020</td>
-                          <td className="td-team">
-                            <div className="img-1"></div>
-                            <div className="img-2"></div>
-                            <div className="img-3"></div>
-                          </td>
-                          <td>
-                            <span className="badge warning">Processing</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Web Development</td>
-                          <td>15 Aug, 2020</td>
-                          <td>22 Aug, 2020</td>
-                          <td className="td-team">
-                            <div className="img-1"></div>
-                            <div className="img-2"></div>
-                            <div className="img-3"></div>
-                          </td>
-                          <td>
-                            <span className="badge success">Success</span>
-                          </td>
-                        </tr>
-                        </tbody>
+                      </thead>
+                      <tbody>
+                        {
+                          categories.map(category => (
+                            <tr key={category._id}>
+                              <td>{category.name}</td>
+                              <td>{new Date(category.createdAt).toDateString()}</td>
+                              <td>{new Date(category.updatedAt).toDateString()}</td>
+                            </tr>
+                          ))
+                        }
+                      </tbody>
                     </table>
                   </div>
               </div>

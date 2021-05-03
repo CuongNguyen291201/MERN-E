@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Switch, Route, useParams } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Products from './products/Products';
 import Login from './auth/Login';
@@ -11,15 +11,15 @@ import DetailProduct from './detailProduct/DetailProduct';
 import OrderHistory from './history/OrderHistory';
 import OrderDetail from './history/OrderDetail';
 import Admin from './admin/Admin';
+import Category from './admin/category/Category';
 
 import { GlobalState } from '../../GlobalState';
 
 const Pages = () => {
-  const params = useParams();
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
+  const [isAdmin] = state.userAPI.isAdmin;
 
-  console.log(params)
   return (
     <Switch>
       <Route path="/" exact component={Banner} />
@@ -34,7 +34,8 @@ const Pages = () => {
       
       <Route path="/cart" exact component={Cart} />
 
-      <Route path="/admin" exact component={Admin} />
+      <Route path="/admin" exact component={ isAdmin ? Admin : NotFound } />
+      <Route path="/admin/create-category" exact component={ isAdmin ? Category : NotFound } />
 
       <Route path="#" exact component={NotFound} />
     </Switch>
