@@ -29,7 +29,7 @@ const Admin = () => {
               </Link>
             </li>
             <li>
-              <Link to="!#">
+              <Link to="/admin/create-product">
                 <span className="ti-face-smile"></span>
                 <span>Create Product</span>
               </Link>

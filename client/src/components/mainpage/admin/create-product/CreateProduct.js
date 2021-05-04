@@ -1,60 +1,27 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import swal from 'sweetalert';
 
 import { GlobalState } from '../../../../GlobalState';
 
-const Category = () => {
+const initialState = {
+  product_id: '',
+  title: '',
+  price: 0,
+  description: '',
+  content: '',
+  category: ''
+};
+
+const CreateProduct = () => {
   const state = useContext(GlobalState);
-  const [token] = state.token;
+  const [product, setProduct] = useState(initialState);
   const [categories] = state.categoryAPI.categories;
-  const [callback, setCallback] = state.categoryAPI.callback;
-  const [category, setCategory] = useState('');
-  const [onEdit, setOnEdit] = useState(false);
-  const [id, setId] = useState('');
+  const [images, setImages] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const createCategory = async () => {
-    try {
-      if (onEdit) {
-        const res = await axios.put(`/api/category/${id}`, {name: category}, {
-          headers: {Authorization: token}
-        })
-  
-        swal("Success!", res.data.msg, "success");
-      } else {
-        const res = await axios.post('/api/category', {name: category}, {
-          headers: {Authorization: token}
-        })
-  
-        swal("Success!", res.data.msg, "success");
-      }
-
-      setOnEdit(false);
-      setCallback(!callback);
-      setCategory('');
-    } catch (err) { 
-      swal("Error!", err.response.data.msg, "error");
-    }
-  }
-
-  const editCategory = async (id, name) => {
-    setId(id);
-    setCategory(name);
-    setOnEdit(true);
-  }
-
-  const deleteCategory = async (id) => {
-    try {
-      const res = await axios.delete(`/api/category/${id}`, {
-        headers: {Authorization: token}
-      })
-
-      swal("Success!", res.data.msg, "success");
-      setCallback(!callback);
-    } catch (err) {
-      swal("Error!", err.response.data.msg, "error");
-    }
+  const styleUpload = {
+    display: images ? "block" : "none"
   }
 
   return (
@@ -138,46 +105,67 @@ const Category = () => {
         </header>
           
         <main>    
-          <h2 className="dash-title">Category</h2>
-          
+          <h2 className="dash-title">Product</h2>
           <div className="dash-create">
             <div className="card-single">
               <div className="card-body">
-                <div>
-                  <h5>Name</h5>
-                  <input type="text" name="category" value={category} 
-                    onChange={(e) => setCategory(e.target.value)}
-                  />
+                <div className="create-product">
+                  <div className="upload">
+                    <input type="file" name="file" id="file_up" />
+                    <div id="file_img" style={styleUpload}>
+                      <img src="https://cdn.dribbble.com/users/1843236/screenshots/5438408/untitled.jpg?compress=1&resize=400x300" alt=""/>
+                      <span>x</span>
+                    </div>
+                  </div>
+
+                  <form>
+                    <div className="row">
+                      <label htmlFor="product_id">Product ID</label>
+                      <input type="text" name="product_id" id="product_id" required value={product.product_id} />
+                    </div>
+                    <div className="row">
+                      <label htmlFor="title">Title</label>
+                      <input type="text" name="title" id="title" required value={product.title} />
+                    </div>
+                    <div className="row">
+                      <label htmlFor="price">Price</label>
+                      <input type="text" name="price" id="price" required value={product.price} />
+                    </div>
+                    <div className="row">
+                      <label htmlFor="description">Description</label>
+                      <textarea type="text" name="description" id="description" required value={product.description} rows="2" />
+                    </div>
+                    <div className="row">
+                      <label htmlFor="content">Content</label>
+                      <textarea type="text" name="content" id="content" required value={product.content} rows="3" />
+                    </div>
+                    <div className="row">
+                      <label htmlFor="categories">Categories:  </label>
+                      <select name="category" value={product.category}>
+                        <option value="">Please select a category</option>
+                        {
+                          categories.map(category => (
+                            <option key={category._id} value={category.name}>
+                              {category.name}
+                            </option>
+                          ))
+                        }
+                      </select>
+                    </div>
+
+                    <button type="submit">Create</button>
+                  </form>
                 </div>
-              </div>
-              <div className="card-footer">
-                <button onClick={() => createCategory()}>{ onEdit ? "Update" : "Create" }</button>
               </div>
             </div>
           </div>
+          
 
-          <div className="dash-cards">
-            {
-              categories.map(category => (
-                <div className="card-single" key={category._id}>
-                  <div className="card-body">
-                    <span className="ti-briefcase"></span>
-                    <div>
-                      <h5>{category.name}</h5>
-                    </div>
-                  </div>
-                  <div className="card-footer">
-                    <button onClick={() => deleteCategory(category._id)}>Delete</button>
-                    <button onClick={() => editCategory(category._id, category.name)}>Edit</button>
-                  </div>
-                </div>
-              ))
-            }
-          </div>     
         </main>
       </div>
     </div>
+  
   )
 }
 
-export default Category
+export default CreateProduct

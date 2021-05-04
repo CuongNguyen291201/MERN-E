@@ -12,6 +12,7 @@ import OrderHistory from './history/OrderHistory';
 import OrderDetail from './history/OrderDetail';
 import Admin from './admin/Admin';
 import Category from './admin/category/Category';
+import CreateProduct from './admin/create-product/CreateProduct';
 
 import { GlobalState } from '../../GlobalState';
 
@@ -36,6 +37,7 @@ const Pages = () => {
 
       <Route path="/admin" exact component={ isAdmin ? Admin : NotFound } />
       <Route path="/admin/create-category" exact component={ isAdmin ? Category : NotFound } />
+      <Route path="/admin/create-product" exact component={ isAdmin ? CreateProduct : NotFound } />
 
       <Route path="#" exact component={NotFound} />
     </Switch>
