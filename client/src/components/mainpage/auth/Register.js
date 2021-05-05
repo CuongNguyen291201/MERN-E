@@ -27,6 +27,7 @@ const Register = () => {
       setError('')
       try {
         await axios.post('/user/register', {...user})
+        localStorage.setItem('Login', true)
         window.location.href = "/"
       } catch (err) {
         swal({

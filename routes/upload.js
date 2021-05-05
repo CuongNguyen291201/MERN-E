@@ -12,7 +12,7 @@ cloudinary.config({
 })
 
 // Upload image only admin can use 
-router.post('/upload', (req, res) => {
+router.post('/upload', auth, authAdmin, (req, res) => {
   try {
     console.log(req.files)
     if (!req.files || Object.keys(req.files).length === 0)
@@ -42,7 +42,7 @@ router.post('/upload', (req, res) => {
 })
 
 // Delete Image only admin can use
-router.post('/destroy', (req, res) => {
+router.post('/destroy', auth, authAdmin, (req, res) => {
   try {
     const {public_id} = req.body;
     if (!public_id) return res.status(400).json({msg: "No images selected."})

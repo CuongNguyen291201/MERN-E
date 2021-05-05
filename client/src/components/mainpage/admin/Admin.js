@@ -6,7 +6,6 @@ import { GlobalState } from '../../../GlobalState';
 const Admin = () => {
   const state = useContext(GlobalState);
   const [categories] = state.categoryAPI.categories;
-  const [products] = state.productsAPI.products;
 
   return (
     <div>
@@ -134,39 +133,6 @@ const Admin = () => {
                   
           <section className="recent">
             <div className="activity-grid">
-              <div className="activity-card">
-                  <h3>Products</h3>
-                  
-                  <div className="table-responsive">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Price</th>
-                          <th>Sold</th>
-                          <th>Image</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {
-                          products.map(product => (
-                            <tr key={product._id}>
-                              <td>{product.title}</td>
-                              <td>{product.price}</td>
-                              <td>{product.sold}</td>
-                              <td className="td-team">
-                                  <img src={product.images.url} alt="" className="img" />
-                              </td>
-                              <td>{product.category}</td>
-                            </tr>
-                          ))
-                        }
-                      </tbody>
-                    </table>
-                  </div>
-              </div>
-
               <div className="activity-card">
                   <h3>Categories</h3>
                   

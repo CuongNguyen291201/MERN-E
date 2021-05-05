@@ -17,6 +17,7 @@ const Login = () => {
     e.preventDefault()
     try {
       await axios.post('/user/login', {...user})
+      localStorage.setItem('Login', true)
       window.location.href = "/"
     } catch (err) {
       swal({

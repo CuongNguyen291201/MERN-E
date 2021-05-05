@@ -1,8 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert';
+import { useParams } from 'react-router-dom';
 
 import { GlobalState } from '../../../../GlobalState';
+import Loading from '../../utils/loading/Loading';
 
 const initialState = {
   product_id: '',
@@ -10,18 +13,110 @@ const initialState = {
   price: 0,
   description: '',
   content: '',
-  category: ''
+  category: '',
+  _id: ''
 };
 
 const CreateProduct = () => {
   const state = useContext(GlobalState);
-  const [product, setProduct] = useState(initialState);
+  const [token] = state.token;
+  const [products] = state.productsAPI.products;
   const [categories] = state.categoryAPI.categories;
+  const [callback, setCallback] = state.productsAPI.callback;
+  const [isAdmin] = state.userAPI.isAdmin;
+
+  const [product, setProduct] = useState(initialState);
   const [images, setImages] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [onEdit, setOnEdit] = useState(false);
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      setOnEdit(true)
+      products.forEach(product => {
+        if (product._id === params.id) {
+          setProduct(product)
+          setImages(product.images)
+        }    
+      })
+    } else {
+      setOnEdit(false)
+      setProduct(initialState)
+      setImages(false)
+    }
+  }, [params, products])
 
   const styleUpload = {
     display: images ? "block" : "none"
+  }
+
+  const handleUpload = async (e) => {
+    e.preventDefault()
+    try {
+      if (!isAdmin) return swal("Error", "You're not an admin.", "error")
+      const file = e.target.files[0]
+
+      if (!file) return swal("Error", "File not exist.", "error")
+      if (file.size > 1024 * 1024) return swal("Error", "Size too large.", "error")
+      if (file.type !== 'image/jpeg' && file.type !== 'image/png') return swal("Error", "File format is incorrect.", "error")
+
+      let formData = new FormData()
+      formData.append('file', file)
+
+      setLoading(true)
+      const res = await axios.post('/api/upload', formData, {
+        headers: {'content-type': 'multipart/form-data', Authorization: token}
+      })
+      setLoading(false)
+      setImages(res.data)
+    } catch (err) {
+      swal("Error", err.response.data.msg, "error")
+    }
+  }
+
+  const handleDestroy = async (e) => {
+    try {
+      if (!isAdmin) return swal("Error", "You're not an admin.", "error")
+      setLoading(true)
+      await axios.post('/api/destroy', {public_id: images.public_id}, {
+        headers: {Authorization: token}
+      })
+      setLoading(false)
+      setImages(false)
+    } catch (err) {
+      swal("Error", err.response.data.msg, "error")
+    }
+  }
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setProduct({...product, [name]: value})
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      if (!isAdmin) return swal("Error", "You're not an admin.", "error")
+      if (!images) return swal("Error", "No image upload.", "error")  
+      
+      if (onEdit) {
+        await axios.put(`/api/products/${product._id}`, {...product, images}, {
+          headers: {Authorization: token}
+        })  
+        setImages(false)
+        setProduct(initialState)
+        setCallback(!callback)
+      } else {
+        await axios.post('/api/products', {...product, images}, {
+          headers: {Authorization: token}
+        })  
+      }
+
+    } catch (err) {
+      swal("Error", err.response.data.msg, "error")
+    }
   }
 
   return (
@@ -111,37 +206,42 @@ const CreateProduct = () => {
               <div className="card-body">
                 <div className="create-product">
                   <div className="upload">
-                    <input type="file" name="file" id="file_up" />
-                    <div id="file_img" style={styleUpload}>
-                      <img src="https://cdn.dribbble.com/users/1843236/screenshots/5438408/untitled.jpg?compress=1&resize=400x300" alt=""/>
-                      <span>x</span>
-                    </div>
+                    <input type="file" name="file" id="file_up" onChange={handleUpload} />
+                    {
+                      loading ? 
+                        <div id="file_img"><Loading /></div>
+                      :
+                        <div id="file_img" style={styleUpload}>
+                          <img src={images ? images.url : ""} alt=""/>
+                          <span onClick={handleDestroy}>x</span>
+                        </div>
+                    }
                   </div>
 
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <div className="row">
                       <label htmlFor="product_id">Product ID</label>
-                      <input type="text" name="product_id" id="product_id" required value={product.product_id} />
+                      <input type="text" name="product_id" id="product_id" required value={product.product_id} onChange={handleChange} />
                     </div>
                     <div className="row">
                       <label htmlFor="title">Title</label>
-                      <input type="text" name="title" id="title" required value={product.title} />
+                      <input type="text" name="title" id="title" required value={product.title} onChange={handleChange} />
                     </div>
                     <div className="row">
                       <label htmlFor="price">Price</label>
-                      <input type="text" name="price" id="price" required value={product.price} />
+                      <input type="text" name="price" id="price" required value={product.price} onChange={handleChange} />
                     </div>
                     <div className="row">
                       <label htmlFor="description">Description</label>
-                      <textarea type="text" name="description" id="description" required value={product.description} rows="2" />
+                      <textarea type="text" name="description" id="description" required value={product.description} rows="2" onChange={handleChange} />
                     </div>
                     <div className="row">
                       <label htmlFor="content">Content</label>
-                      <textarea type="text" name="content" id="content" required value={product.content} rows="3" />
+                      <textarea type="text" name="content" id="content" required value={product.content} rows="3" onChange={handleChange} />
                     </div>
                     <div className="row">
                       <label htmlFor="categories">Categories:  </label>
-                      <select name="category" value={product.category}>
+                      <select name="category" value={product.category} onChange={handleChange}>
                         <option value="">Please select a category</option>
                         {
                           categories.map(category => (
@@ -153,13 +253,80 @@ const CreateProduct = () => {
                       </select>
                     </div>
 
-                    <button type="submit">Create</button>
+                    <button type="submit">{onEdit ? "Update" : "Create"}</button>
                   </form>
                 </div>
               </div>
             </div>
           </div>
           
+          <section className="recent">
+            <div className="activity-grid">
+              <div className="activity-card">
+                <h3>Products</h3>
+                  
+                <div className="table-responsive">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Sold</th>
+                        <th>Image</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        products.map(product => (
+                          <tr key={product._id}>
+                            <td>{product.title}</td>
+                            <td>{product.price}</td>
+                            <td>{product.sold}</td>
+                            <td className="td-team">
+                                <img src={product.images.url} alt="" className="img" />
+                            </td>
+                            <td>{product.category}</td>
+                            <td>
+                              <Link to={`/admin/edit-product/${product._id}`}>Edit</Link>
+                              <Link>Delete</Link>
+                            </td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="summary">
+                <div className="summary-card">
+                  <div className="summary-single">
+                    <span className="ti-id-badge"></span>
+                    <div>
+                      <h5>196</h5>
+                      <small>Number of staff</small>
+                    </div>
+                  </div>
+                  <div className="summary-single">
+                    <span className="ti-calendar"></span>
+                    <div>
+                      <h5>16</h5>
+                      <small>Number of leave</small>
+                    </div>
+                  </div>
+                  <div className="summary-single">
+                    <span className="ti-face-smile"></span>
+                    <div>
+                      <h5>12</h5>
+                      <small>Profile update request</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
         </main>
       </div>
