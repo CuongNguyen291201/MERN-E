@@ -10,6 +10,7 @@ const Category = () => {
   const [token] = state.token;
   const [categories] = state.categoryAPI.categories;
   const [callback, setCallback] = state.categoryAPI.callback;
+
   const [category, setCategory] = useState('');
   const [onEdit, setOnEdit] = useState(false);
   const [id, setId] = useState('');
@@ -156,24 +157,70 @@ const Category = () => {
             </div>
           </div>
 
-          <div className="dash-cards">
-            {
-              categories.map(category => (
-                <div className="card-single" key={category._id}>
-                  <div className="card-body">
-                    <span className="ti-briefcase"></span>
+          <section className="recent">
+            <div className="activity-grid">
+              <div className="activity-card">
+                  <h3>Categories</h3>
+                  
+                  <div className="table-responsive">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Created At</th>
+                          <th>Updated At</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {
+                          categories.map(category => (
+                            <tr key={category._id}>
+                              <td>{category.name}</td>
+                              <td>{new Date(category.createdAt).toDateString()}</td>
+                              <td>{new Date(category.updatedAt).toDateString()}</td>
+                              <td>
+                                <button onClick={() => deleteCategory(category._id)}>Delete</button>
+                                <button onClick={() => editCategory(category._id, category.name)}>Edit</button>
+                              </td>
+                            </tr>
+                          ))
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+              
+              <div className="summary">
+                <div className="summary-card">
+                  <div className="summary-single">
+                    <span className="ti-id-badge"></span>
                     <div>
-                      <h5>{category.name}</h5>
+                      <h5>196</h5>
+                      <small>Number of staff</small>
                     </div>
                   </div>
-                  <div className="card-footer">
-                    <button onClick={() => deleteCategory(category._id)}>Delete</button>
-                    <button onClick={() => editCategory(category._id, category.name)}>Edit</button>
+                  <div className="summary-single">
+                    <span className="ti-calendar"></span>
+                    <div>
+                      <h5>16</h5>
+                      <small>Number of leave</small>
+                    </div>
+                  </div>
+                  <div className="summary-single">
+                    <span className="ti-face-smile"></span>
+                    <div>
+                      <h5>12</h5>
+                      <small>Profile update request</small>
+                    </div>
                   </div>
                 </div>
-              ))
-            }
-          </div>     
+
+              </div>
+            </div>
+          </section>
+            
+
         </main>
       </div>
     </div>

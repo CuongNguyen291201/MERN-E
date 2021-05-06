@@ -22,7 +22,7 @@ const Admin = () => {
         <div className="sidebar-menu">
           <ul>
             <li>
-              <Link to="!#">
+              <Link to="/admin">
                 <span className="ti-home"></span>
                 <span>Home</span>
               </Link>

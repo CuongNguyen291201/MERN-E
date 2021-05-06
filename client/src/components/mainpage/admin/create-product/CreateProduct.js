@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { GlobalState } from '../../../../GlobalState';
 import Loading from '../../utils/loading/Loading';
@@ -31,6 +31,7 @@ const CreateProduct = () => {
   const [onEdit, setOnEdit] = useState(false);
 
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     if (params.id) {
@@ -104,17 +105,36 @@ const CreateProduct = () => {
       if (onEdit) {
         await axios.put(`/api/products/${product._id}`, {...product, images}, {
           headers: {Authorization: token}
-        })  
-        setImages(false)
-        setProduct(initialState)
-        setCallback(!callback)
+        })
       } else {
         await axios.post('/api/products', {...product, images}, {
           headers: {Authorization: token}
         })  
       }
-
+      setCallback(!callback)
+      history.push('/admin/create-product')
     } catch (err) {
+      swal("Error", err.response.data.msg, "error")
+    }
+  }
+
+  const deleteProduct = async (id, public_id) => {
+    try {
+      setLoading(true)
+      const destroyImg = axios.post('/api/destroy', {public_id}, {
+        headers: {Authorization: token}
+      })
+
+      const deleteProduct = axios.delete(`/api/products/${id}`, {
+        headers: {Authorization: token}
+      })
+
+      await destroyImg
+      await deleteProduct
+      setCallback(!callback)
+      setLoading(false)
+    } catch (err) {
+      console.log(err)
       swal("Error", err.response.data.msg, "error")
     }
   }
@@ -289,8 +309,8 @@ const CreateProduct = () => {
                             </td>
                             <td>{product.category}</td>
                             <td>
-                              <Link to={`/admin/edit-product/${product._id}`}>Edit</Link>
-                              <Link>Delete</Link>
+                              <Link to={`/admin/edit-product/${product._id}`} style={{marginRight: '5px'}}>Edit</Link>
+                              <Link to="/admin/create-product" onClick={() => deleteProduct(product._id, product.images.public_id)}>Delete</Link>
                             </td>
                           </tr>
                         ))

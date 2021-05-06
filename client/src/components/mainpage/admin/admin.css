@@ -203,7 +203,7 @@ main {
 
 .activity-grid {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 75% 25%;
     grid-column-gap: 1.5rem;
 }
 
@@ -212,11 +212,6 @@ main {
 .bday-card {
     background: #fff;
     border-radius: 7px;
-}
-
-.activity-card {
-    grid-row: inherit;
-    overflow: hidden;
 }
 
 .activity-card h3 {
@@ -232,6 +227,16 @@ main {
 .activity-card thead {
     background: #efefef;
     text-align: left;
+}
+
+.activity-card button {
+    margin: 0 3px;
+    padding: 0 5px;
+    outline: none;
+    border-radius: 2px;
+    background: #027581;
+    color: white;
+    border: none;
 }
 
 th, td {
@@ -281,7 +286,7 @@ tbody tr:nth-child(even) {
 }
 
 .summary-card {
-    margin: 1.5rem 0;
+    margin-bottom: 1.5rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
 }
@@ -307,38 +312,6 @@ tbody tr:nth-child(even) {
 .summary-single small {
     font-weight: 700;
     color: var(--text-grey);
-}
-
-.bday-flex {
-    display: flex;
-    align-items: center;
-    margin-bottom: .3rem;
-}
-
-.bday-card {
-    padding: 1rem;
-}
-
-.bday-img {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    border: 3px solid #efefef;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-right: .7rem;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-center button {
-    background: var(--main-color);
-    color: #fff;
-    border: 1px solid var(--main-color);
-    border-radius: 4px;
-    padding: .4rem 1rem;
 }
 
 .table-responsive {
@@ -528,3 +501,4 @@ tbody tr:nth-child(even) {
     outline: none;
     margin-left: 10px;
 }
+
