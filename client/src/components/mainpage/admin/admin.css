@@ -180,8 +180,6 @@ main {
 }
 
 .card-footer {
-    display: flex;
-    justify-content: space-around;
     padding: .2rem 1rem;
     background: #f9fafc;
     text-align: center;
@@ -251,23 +249,6 @@ td {
 
 tbody tr:nth-child(even) {
     background: #f9fafc;
-}
-
-.badge {
-    padding: .2rem 1rem;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: .7rem;
-}
-
-.badge.success {
-    background: #DEF7EC;
-    color: var(--main-color);
-}
-
-.badge.warning {
-    background: #F0F6B2;
-    color: orange;
 }
 
 .td-team {

@@ -134,7 +134,6 @@ const CreateProduct = () => {
       setCallback(!callback)
       setLoading(false)
     } catch (err) {
-      console.log(err)
       swal("Error", err.response.data.msg, "error")
     }
   }
@@ -265,7 +264,7 @@ const CreateProduct = () => {
                         <option value="">Please select a category</option>
                         {
                           categories.map(category => (
-                            <option key={category._id} value={category.name}>
+                            <option key={category._id} value={category._id}>
                               {category.name}
                             </option>
                           ))
@@ -307,7 +306,9 @@ const CreateProduct = () => {
                             <td className="td-team">
                                 <img src={product.images.url} alt="" className="img" />
                             </td>
-                            <td>{product.category}</td>
+                            <td>
+                              {product.category}
+                            </td>
                             <td>
                               <Link to={`/admin/edit-product/${product._id}`} style={{marginRight: '5px'}}>Edit</Link>
                               <Link to="/admin/create-product" onClick={() => deleteProduct(product._id, product.images.public_id)}>Delete</Link>

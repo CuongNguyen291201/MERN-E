@@ -46,6 +46,10 @@
   border-radius: 50%;
 }
 
+.center_header .search form {
+  display: flex;
+}
+
 .center_header .search input {
   padding: 10px;
   border: none;
@@ -58,6 +62,7 @@
   padding: 10px;
   color: white;
   border: none;
+  outline: none;
 }
 
 .center_header .user {

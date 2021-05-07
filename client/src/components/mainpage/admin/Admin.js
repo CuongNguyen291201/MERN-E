@@ -1,11 +1,22 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import { GlobalState } from '../../../GlobalState';
 
 const Admin = () => {
   const state = useContext(GlobalState);
-  const [categories] = state.categoryAPI.categories;
+  const [history] = state.userAPI.history;
+
+  const [paymentDetail, setPaymentDetail] = useState([])
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      history.forEach(item => {
+        if (item._id === params.id) setPaymentDetail(item)
+      })
+    }
+  }, [params, history])
 
   return (
     <div>
@@ -134,24 +145,24 @@ const Admin = () => {
           <section className="recent">
             <div className="activity-grid">
               <div className="activity-card">
-                  <h3>Categories</h3>
+                  <h3>Payment</h3>
                   
                   <div className="table-responsive">
                     <table>
                       <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>Created At</th>
-                          <th>Updated At</th>
+                          <th>Payment ID</th>
+                          <th>Date Of Purchased</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
                         {
-                          categories.map(category => (
-                            <tr key={category._id}>
-                              <td>{category.name}</td>
-                              <td>{new Date(category.createdAt).toDateString()}</td>
-                              <td>{new Date(category.updatedAt).toDateString()}</td>
+                          history.map(item => (
+                            <tr key={item._id}>
+                              <td>{item.paymentID}</td>
+                              <td>{new Date(item.createdAt).toDateString()}</td>
+                              <td><Link to={`/admin/${item._id}`}>View</Link></td>
                             </tr>
                           ))
                         }
@@ -186,9 +197,38 @@ const Admin = () => {
                 </div>
 
               </div>
-            </div>
+            </div>  
           </section>
-              
+          
+          {/* {
+            params.id ? 
+              <div className="payment-infor table-responsive">
+                <table>
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      paymentDetail.cart.map(item => (
+                        <tr key={item._id}>
+                          <td><img src={item.images.url} alt=""/></td>
+                          <td>{item.title}</td>
+                          <td>{item.quantity}</td>
+                          <td>{item.quantity * item.price}</td>
+                        </tr>
+                      ))
+                    }
+                  </tbody>
+                </table>
+              </div>
+            : <div></div>
+          } */}
+
         </main>
       </div>
     </div>

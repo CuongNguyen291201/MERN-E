@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -14,6 +14,15 @@ const Header = () => {
   const [isLogged] = state.userAPI.isLogged;
   const [isAdmin] = state.userAPI.isAdmin;
   const [cart] = state.userAPI.cart;
+  const [search, setSearch] = state.productsAPI.search;
+
+  const [handleSearch, setHandleSearch] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setSearch(handleSearch)
+    setHandleSearch('')
+  }
 
   const logoutUser = async () => {
     await axios.get('/user/logout')
@@ -67,8 +76,10 @@ const Header = () => {
       <div className="center_header">
         <img src={Logo} alt="" className="logo"/>
         <div className="search">
-          <input type="text" name="search" id="search" placeholder="Search for products"/>
-          <button>Search</button>
+          <form onSubmit={handleSubmit}>
+            <input type="text" name="search" id="search" placeholder="Search for products" value={handleSearch} onChange={(e) => setHandleSearch(e.target.value.toLowerCase())}/>
+            <button type="submit">Search</button>
+          </form>
         </div>
         <div className="user">
           <Link to="/cart">

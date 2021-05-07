@@ -20,12 +20,7 @@ const UserAPI = (token) => {
           res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
           setCart(res.data.cart)
         } catch (err) {
-          swal({
-            title: "Error",
-            text: err.response.data.msg,
-            icon: "error",
-            button: "OK",
-          });
+          swal("Error", err.response.data.msg, "error")
         }
       }
 

@@ -81,7 +81,7 @@ const Cart = () => {
     <div className="shopping-cart">
       <div>
 
-      <h2>CART <small>({cart.length} propucts)</small></h2>
+      <h2>CART <small>({cart.length} products)</small></h2>
       {
         cart.map(product => (
           <div className="cart" key={product._id}>
@@ -98,7 +98,7 @@ const Cart = () => {
                   <button onClick={() => increment(product._id)}> + </button>
                 </div>
 
-                <div className="delete" onClick={() => removeProduct(product._id)}>X</div>
+                <div className="delete" onClick={() => removeProduct(product._id)}>x</div>
               </div>
             </div>
         ))
