@@ -33,6 +33,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 ul li {
   list-style: none;
 }
@@ -45,6 +49,12 @@ button {
 
 /* ----------------- Header ---------------- */
 @import url("./components/headers/header.css");
+
+/* ----------------- Banner ---------------- */
+@import url("./components/banner/banner.css");
+
+/* ----------------- Home ------------------ */
+@import url("./components/home/home.css");
 
 /* ----------------- Products -------------- */
 @import url("./components/mainpage/products/product.css");

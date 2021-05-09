@@ -5,6 +5,8 @@
   box-shadow: 0 0 15px #ddd;
   position: relative;
   margin: 10px 0;
+  z-index: 999;
+  background: white;
 }
 
 .product_card img {

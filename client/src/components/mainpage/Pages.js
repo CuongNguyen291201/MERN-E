@@ -12,7 +12,7 @@ import OrderHistory from './history/OrderHistory';
 import OrderDetail from './history/OrderDetail';
 import Admin from './admin/Admin';
 import Category from './admin/category/Category';
-import CreateProduct from './admin/create-product/CreateProduct';
+import CreateProduct from './admin/create-product/CreateProduct'; 
 
 import { GlobalState } from '../../GlobalState';
 
