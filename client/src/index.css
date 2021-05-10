@@ -73,3 +73,6 @@ button {
 
 /* ----------------- Admin ---------------- */
 @import url("./components/mainpage/admin/admin.css");
+
+/* ----------------- Footer --------------- */
+@import url("./components/footer/footer.css");

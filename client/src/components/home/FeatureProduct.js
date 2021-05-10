@@ -8,12 +8,12 @@ const FeatureProduct = () => {
   const [products] = state.productsAPI.products;
   const [page, setPage] = state.productsAPI.page;
   const [sort, setSort] = state.productsAPI.sort;
-
+      
   useEffect(() => {
     setPage(1/3)
     setSort('sort=-sold')
   }, [setPage, setSort])
-
+  
   return (
     <div className="home">
       <h5>Featured products</h5>
@@ -22,7 +22,7 @@ const FeatureProduct = () => {
           products.map(product => (
             <ProductItem key={product._id} product={product}/>
             ))
-          }
+        }
       </div>
     </div>
   )

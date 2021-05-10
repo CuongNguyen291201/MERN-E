@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { DataProvider } from './GlobalState';
 import Header from './components/headers/Header';
 import Pages from './components/mainpage/Pages';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <div className="App">
           <Header />
           <Pages />
+          <Footer />
         </div>
       </Router>
     </DataProvider>

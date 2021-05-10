@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { GlobalState } from '../../../GlobalState';
 import ProductItem from '../utils/productItem/ProductItem';
@@ -12,6 +12,12 @@ const Products = () => {
   const [result] = state.productsAPI.result;
   
   const [categories] = state.categoryAPI.categories;
+
+  useEffect(() => {
+    setCategory('')
+    setSort('')
+    setPage(1)
+  }, [setCategory, setSort, setPage])
 
   return (
     <div className="product-all">
