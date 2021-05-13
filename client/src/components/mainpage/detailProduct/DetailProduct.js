@@ -37,11 +37,14 @@ const DetailProduct = () => {
           </Link>
           <p>Sold: {detailProduct.sold}</p>
           <p>Shop secure. Free Returns</p>
-          <p>Share</p>
+          <p>Share: 
+            {" "}<i className="fab fa-facebook-f fb"></i>
+            {" "}<i className="fab fa-youtube yt"></i>
+          </p>
         </div>
       </div>
       <div className="related-products">
-        <h2>Related Products</h2>
+        <h3>Related Products</h3>
         <div className="products">
           {
             products.map(product => {

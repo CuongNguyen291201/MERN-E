@@ -7,18 +7,20 @@
   justify-content: space-around;
   font-size: 150%;
   padding: 50px;
-  box-shadow: 0 0 15px #ddd;
 }
 
 .related-products {
-  margin: 0 auto;
+  margin: 20px auto 0;
   overflow: hidden;
   width: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 150%;
-  box-shadow: 0 0 15px #ddd;
+}
+
+.related-products h3 {
+  width: 100%;
 }
 
 .detail img {
@@ -51,6 +53,7 @@
 .box-detail .cart {
   background: #333;
   color: white;
+  font-size: 1.3rem;
   padding: 10px 25px;
   display: inline-block;
   letter-spacing: 2px;

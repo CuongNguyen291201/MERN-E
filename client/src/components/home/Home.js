@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import FeatureProduct from './FeatureProduct';
 import SignatureProduct from './SignatureProduct';
-import Letter from '../banner/img/newsletter.png';
+
 
 const Home = () => {
   return (
@@ -15,17 +15,7 @@ const Home = () => {
           <button><Link to="/products">See More</Link></button>
         </div>
       </div>
-      <div className="register-notification">
-        <img src={Letter} alt=""/>
-        <div className="infor-notifi">
-          <h5>Sign up for the newsletter</h5>
-          <p>Don't miss out on thousands of super cool products and programs</p>
-        </div>
-        <form>
-          <input type="email" placeholder="Your email address"/>
-          <button type="submit">Register</button>
-        </form>
-      </div>
+      
     </>
   )
 }
