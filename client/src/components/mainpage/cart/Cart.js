@@ -8,9 +8,10 @@ import PaypalButton from './PaypalButton';
 const Cart = () => {
   const state = useContext(GlobalState);
   const [token] = state.token;
+  const [infor] = state.userAPI.infor; 
   const [cart, setCart] = state.userAPI.cart;
-  const [total, setTotal] = useState(0);
   const [callback, setCallback] = state.userAPI.callback;
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const getTotal = () => {
@@ -79,38 +80,44 @@ const Cart = () => {
     
   return (
     <div className="shopping-cart">
-      <div>
-
-      <h2>CART <small>({cart.length} products)</small></h2>
-      {
-        cart.map(product => (
-          <div className="cart" key={product._id}>
-              <img src={product.images.url} alt="" className="img_container" />
-              <div className="box-detail">
-                <div className="row">
+      <div className="cart-detail">
+        <h5>CART <small>({cart.length} products)</small></h5>
+        {
+          cart.map(product => (
+            <div className="cart" key={product._id}>
+                <img src={product.images.url} alt="" className="img_container" />
+                <div className="box-detail">
                   <h3>{product.title}</h3>
-                </div>
-                <p>$ {product.price * product.quantity}</p>
+                  <p>$ {product.price * product.quantity}</p>
 
-                <div className="amount">
-                  <button onClick={() => decrement(product._id)}> - </button>
-                  <span>{product.quantity}</span>
-                  <button onClick={() => increment(product._id)}> + </button>
-                </div>
+                  <div className="amount">
+                    <button onClick={() => decrement(product._id)}> - </button>
+                    <span>{product.quantity}</span>
+                    <button onClick={() => increment(product._id)}> + </button>
+                  </div>
 
-                <div className="delete" onClick={() => removeProduct(product._id)}>x</div>
+                  <i class="fas fa-times delete" onClick={() => removeProduct(product._id)}></i>
+                </div>
               </div>
-            </div>
-        ))
-      }
+          ))
+        }
       </div>
 
       <div className="total">
-        <h3>Total: ${total}</h3>
+        <div className="address">
+          <h5 className="address-title">Address</h5>
+          <p className="address-name">{infor[0]} | {infor[1]}</p>
+          <p>{infor[2]}</p>
+        </div>
+        <div className="payment">
+          <p>Subtotal: ${total}</p>
+          <p>Total: <span>${total}</span></p>
+        </div>
         <PaypalButton 
           total={total}
           tranSuccess={tranSuccess}
-          />
+          className="payment-button"
+        />
       </div>
       
     </div> 

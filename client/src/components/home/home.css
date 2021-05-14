@@ -31,46 +31,6 @@
   margin: 10px 0;
 }
 
-.register-notification {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-between
-}
-
-.register-notification img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-
-.register-notification .infor-notifi {
-  margin-top: 20px;
-}
-
-.register-notification form {
-  margin-top: 20px;
-}
-
-.register-notification form input {
-  width: 300px;
-  padding: 4px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  outline: none;
-  margin-right: 10px;
-}
-
-.register-notification form button {
-  outline: none;
-  background-color: #31BDF1;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  padding: 5px;
-}
-
 @media only all and (min-width: 320px) and (max-width: 1024px) {
   .home {
     width: 60%;

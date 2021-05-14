@@ -8,6 +8,7 @@ const UserAPI = (token) => {
   const [cart, setCart] = useState([]);
   const [history, setHistory] = useState([]);
   const [callback, setCallback] = useState(false);
+  const [infor, setInfor] = useState([]);
 
   useEffect(() => {
     if (token) {
@@ -19,6 +20,7 @@ const UserAPI = (token) => {
           setIsLogged(true)
           res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
           setCart(res.data.cart)
+          setInfor([res.data.name, res.data.mobile, res.data.address])
         } catch (err) {
           swal("Error", err.response.data.msg, "error")
         }
@@ -69,7 +71,8 @@ const UserAPI = (token) => {
     cart: [cart, setCart],
     addCart: addCart,
     history: [history, setHistory],
-    callback: [callback, setCallback]
+    callback: [callback, setCallback],
+    infor: [infor, setInfor]
   }
 }
 

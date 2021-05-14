@@ -1,3 +1,14 @@
+.shopping-cart {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cart-detail {
+  width: 70%;
+}
+
 .cart {
   position: relative;
   transform: scaleY(0.98);
@@ -16,9 +27,13 @@
 .cart img {
   max-width: 200px;
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: contain;
   display: block;
+}
+
+.box-detail {
+  text-align: center;
 }
 
 .amount span {
@@ -33,23 +48,68 @@
   align-items: center;
   border: 1px solid #777;
   border-radius: 3px;
+  outline: none;
 }
 
 .delete {
   position: absolute;
   top: 0;
   right: 5px;
-  color: crimson;
+  color: #83C386;
   font-weight: 900;
   cursor: pointer;
 }
 
 .total {
+  margin-top: 35px;
+  width: 30%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
-.total h3 {
+.address, .payment{
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 3px #dddddd;
+}
+
+.address-title, .address-name, .payment {
+  font-weight: 600;
+}
+
+.address {
+  text-align: left;
+  padding: 5px 0 0 10px;
+}
+
+.payment {
+  margin: 20px 0;
+  padding: 5px 0 0 10px;
+  text-align: left;
+}
+
+.payment-button {
+  width: 100%;
+  padding: 20px;
+}
+
+.total .payment span {
   color: crimson;
+}
+
+@media only all and (min-width: 320px) and (max-width: 1024px) {
+  .shopping-cart {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-detail {
+    width: 100%;
+  }
+
+  .total {
+    width: 80%;
+    margin: 2rem auto 0;
+  }
 }

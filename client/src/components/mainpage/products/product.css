@@ -9,6 +9,10 @@
   margin: 30px 0;  
 }
 
+.filter-products select {
+  outline: none;
+}
+
 .products {
   width: 100%;
   display: grid;
@@ -34,7 +38,7 @@
 .product-all button {
   position: absolute;
   text-align: center;
-  top: 97.5%;
+  top: 99%;
   left: 50%;
   border: 1px solid #83c386;
   outline: none;

@@ -10,7 +10,7 @@ import Letter from '../banner/img/newsletter.png';
 
 const Footer = () => {
   return (
-    <>
+    <div className="footer-notify">
       <div className="register-notification">
         <img src={Letter} alt=""/>
         <div className="infor-notifi">
@@ -48,7 +48,7 @@ const Footer = () => {
               <li><Link to="/">Sale Together</Link></li>
             </ul>
           </div>
-          <div className="payment">
+          <div className="payment-footer">
             <h5>Payment Method</h5>
             <img src={Cash} alt=""/>
             <img src={Visa} alt=""/>
@@ -64,7 +64,7 @@ const Footer = () => {
           <i className="fab fa-linkedin-in ld"></i>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
