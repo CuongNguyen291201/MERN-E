@@ -74,30 +74,35 @@ const Header = () => {
       </div>
 
       <div className="center_header">
-        <img src={Logo} alt="" className="logo"/>
-        <div className="search">
-          <form onSubmit={handleSubmit}>
-            <input type="text" name="search" id="search" placeholder="Search for products" value={handleSearch} onChange={(e) => setHandleSearch(e.target.value.toLowerCase())}/>
-            <button type="submit">Search</button>
-          </form>
-        </div>
-        <div className="user">
-          <Link to="/cart">
-            <img src={Cart} alt="" width="20"/>
-          </Link>
-          <span>{cart.length}</span>
-        </div>
-      </div>
+        <div className="header">
+          <img src={Logo} alt="" className="logo"/>
 
-      <div className="navigation_header">
-        <ul>
-          <li><Link to="/">New arrivals</Link></li>
-          <li><Link to="/">Brands</Link></li>
-          <li><Link to="/">Women</Link></li>
-          <li><Link to="/">Men</Link></li>
-          <li><Link to="/">Other</Link></li>
-          <li><Link to="/">Sale</Link></li>
-        </ul>
+          <div className="menu_bars">
+            <i className="fas fa-bars"></i>
+          </div>
+
+          <div className="search">
+            <form onSubmit={handleSubmit}>
+              <input type="text" name="search" id="search" placeholder="Search for products" value={handleSearch} onChange={(e) => setHandleSearch(e.target.value.toLowerCase())}/>
+              <button type="submit">Search</button>
+            </form>
+          </div>
+
+          <div className="user">
+            <i className="far fa-user"></i>
+          </div>
+
+          <div className="user-modal">
+            <div className="modal-custom"></div>
+          </div>
+
+          <div className="user-cart">
+            <Link to="/cart">
+              <i className="fas fa-shopping-cart cart-number"></i>
+            </Link>
+            <span>{cart.length}</span>
+          </div>
+        </div>
       </div>
     </header>
   )
