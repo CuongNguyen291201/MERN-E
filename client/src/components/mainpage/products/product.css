@@ -38,7 +38,7 @@
 .product-all button {
   position: absolute;
   text-align: center;
-  top: 99%;
+  top: 100%;
   left: 50%;
   border: 1px solid #83c386;
   outline: none;
@@ -63,6 +63,9 @@
   }
   .sort {
     margin: 0 0 0 20px;
+  }
+  .product-all button {
+    left: 40%;
   }
 }
 

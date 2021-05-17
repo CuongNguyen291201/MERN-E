@@ -33,6 +33,8 @@
   min-height: 65px;
   width: 100%;
   background: #D9EFD8;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
 }
 
 .center_header .header {
@@ -84,19 +86,6 @@
   left: 73%;
 }
 
-.center_header .user:hover + .user-modal {
-  display: block;
-  transition: all 1s;
-}
-
-/* .center_header .user-modal .modal-custom {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: white;
-  transform: rotate(45deg);
-} */
-
 .center_header .user-cart {
   display: flex;
   align-items: center;
@@ -118,7 +107,41 @@
   left: 10px;
 }
 
+.center_header .menu_bars {
+  cursor: pointer;
+}
 
+.center_header .header {
+  position: relative;
+}
+
+.center_header .header .nav {
+  width: 10rem;
+  background: white;
+  color: black;
+  position: absolute;
+  left: 15%;
+  z-index: 9999;
+}
+
+.center_header .header .nav ul {
+  width: 100%;
+  margin: 0;
+}
+
+.center_header .header .nav li {
+  width: 100%;
+  padding: .5rem 0 .5rem .5rem;
+}
+
+.center_header .header .nav li:hover {
+  background: lightblue;
+  color: white;
+}
+
+.center_header .header .nav li:hover + .nav ul {
+  display: block;
+}
 
 @media only all and (min-width: 320px) and (max-width: 1024px) {
   .center_header .search input {
@@ -127,6 +150,13 @@
 
   .center_header .search {
     display: flex;
+  }
+
+}
+
+@media only all and (max-width: 426px) {
+  .option_header {
+    display: none;
   }
 
 }

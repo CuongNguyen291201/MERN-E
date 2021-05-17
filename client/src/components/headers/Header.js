@@ -6,17 +6,19 @@ import './header.css';
 import { GlobalState } from '../../GlobalState';
 import Menu from './icon/menu.svg';
 import Close from './icon/close.svg';
-import Cart from './icon/cart.svg';
 import Logo from './icon/camera.png';
 
 const Header = () => {
   const state = useContext(GlobalState);
+  const [categories] = state.categoryAPI.categories;
   const [isLogged] = state.userAPI.isLogged;
   const [isAdmin] = state.userAPI.isAdmin;
   const [cart] = state.userAPI.cart;
   const [search, setSearch] = state.productsAPI.search;
+  const [infor] = state.userAPI.infor;
 
   const [handleSearch, setHandleSearch] = useState('');
+  const [flag, setFlag] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -78,7 +80,20 @@ const Header = () => {
           <img src={Logo} alt="" className="logo"/>
 
           <div className="menu_bars">
-            <i className="fas fa-bars"></i>
+            <span onClick={() => setFlag(!flag)}><i className="fas fa-bars"></i> All Categories</span>
+            {
+              flag ?
+              <nav className="nav">
+                <ul className="nav__list">
+                  {
+                    categories.map(category => (
+                      <Link to="/products" key={category._id}><li className="nav__item" onClick={() => setFlag(!flag)}>{category.name}</li></Link>
+                    ))
+                  }
+                </ul>
+              </nav>
+              : <></>
+            }
           </div>
 
           <div className="search">
@@ -89,11 +104,7 @@ const Header = () => {
           </div>
 
           <div className="user">
-            <i className="far fa-user"></i>
-          </div>
-
-          <div className="user-modal">
-            <div className="modal-custom"></div>
+            <span><i className="far fa-user"></i> {infor[0]}</span>
           </div>
 
           <div className="user-cart">
