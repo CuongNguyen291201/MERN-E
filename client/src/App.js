@@ -7,6 +7,7 @@ import Pages from './components/mainpage/Pages';
 import Footer from './components/footer/Footer';
 
 function App() {
+  
   return (
     <DataProvider>  
       <Router>

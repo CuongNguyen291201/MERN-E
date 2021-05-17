@@ -76,6 +76,47 @@ const Header = () => {
       </div>
 
       <div className="center_header">
+        <div className="header-responsive">
+          <img src={Logo} alt="" className="logo"/>
+          <label htmlFor="nav_mobile-input"><i className="fas fa-bars"></i></label>
+
+          <input type="checkbox" name="" id="nav_mobile-input" className="nav_input" />      
+          <label htmlFor="nav_mobile-input" className="nav__overlay"></label> 
+
+          <nav className="nav_mobile">
+            <div className="nav_mobile-close">
+              <span><i className="far fa-user"></i> {infor[0]}</span>
+              <label htmlFor="nav_mobile-input"><i className="fas fa-times"></i></label>
+            </div>
+            <ul className="nav_mobile-list">
+              <li className="nav_mobile-item"><Link to="/">Store Location</Link></li>
+              <li className="nav_mobile-item"><Link to="/">Blog</Link></li>
+              { isAdmin 
+                ? <li className="nav_mobile-item"><Link to="/admin">My Admin</Link></li> 
+                : <li className="nav_mobile-item"><Link to="/">My wishlist</Link></li>
+              }
+              {
+                isLogged 
+                ? loggedRouter()
+                : 
+                <>
+                  <li className="nav_mobile-item"><Link to="/login">Sign in</Link></li>
+                  <li className="nav_mobile-item"><Link to="/register">Register</Link></li> 
+                </>
+              }
+            </ul>
+          </nav>
+        </div>
+
+        <div className="header__search-responsive">
+          <div className="search">
+            <form onSubmit={handleSubmit}>
+              <input type="text" name="search" placeholder="Search for products" value={handleSearch} onChange={(e) => setHandleSearch(e.target.value.toLowerCase())}/>
+              <button type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+
         <div className="header">
           <img src={Logo} alt="" className="logo"/>
 

@@ -41,43 +41,43 @@ const Admin = () => {
               </Link>
             </li>
             <li>
-              <Link to="/admin/create-product">
+              <Link to="/admin">
                 <span className="ti-face-smile"></span>
                 <span>Create Product</span>
               </Link>
             </li>
             <li>
-              <Link to="/admin/create-category">
+              <Link to="/admin">
                 <span className="ti-agenda"></span>
                 <span>Create Category</span>
               </Link>
             </li>
             <li>
-              <Link to="!#">
+              <Link to="/admin">
                 <span className="ti-clipboard"></span>
                 <span>Leaves</span>
               </Link>
             </li>
             <li>
-              <Link to="!#">
+              <Link to="/admin">
                 <span className="ti-folder"></span>
                 <span>Projects</span>
               </Link>
             </li>
             <li>
-              <Link to="!#">
+              <Link to="/admin">
                 <span className="ti-time"></span>
                 <span>Timesheet</span>
               </Link>
             </li>
             <li>
-              <Link to="!#">
+              <Link to="/admin">
                 <span className="ti-book"></span>
                 <span>Contacts</span>
               </Link>
             </li>
             <li>
-              <Link to="!#">
+              <Link to="/admin">
                 <span className="ti-settings"></span>
                 <span>Account</span>
               </Link>
