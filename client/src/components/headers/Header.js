@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import './header.css';
 import { GlobalState } from '../../GlobalState';
-import Menu from './icon/menu.svg';
-import Close from './icon/close.svg';
 import Logo from './icon/camera.png';
 
 const Header = () => {
@@ -18,7 +16,6 @@ const Header = () => {
   const [infor] = state.userAPI.infor;
 
   const [handleSearch, setHandleSearch] = useState('');
-  const [flag, setFlag] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -32,22 +29,10 @@ const Header = () => {
     window.location.href = '/';
   }
 
-  const loggedRouter = () => {
-    return (
-      <>
-        <li><Link to="/">User</Link></li>
-        <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
-      </>
-    )
-  }
-
   return (
     <header>
       <div className="option_header">
         <div className="option_header-content">
-          <div className="menu">
-            <img src={Menu} alt="" width="30"/>
-          </div>
           <div className="languages">
             <p>Vi-VN | En-US</p>
           </div>
@@ -61,23 +46,24 @@ const Header = () => {
             }
             {
               isLogged 
-              ? loggedRouter()
-              : 
+              ? 
+              <>
+                <li><Link to="/">User</Link></li>
+                <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
+              </> 
+              :
               <>
                 <li><Link to="/login">Sign in</Link></li>
                 <li><Link to="/register">Register</Link></li> 
               </>
             }
-            <li>
-              <img src={Close} alt="" width="30" className="menu" />
-            </li>
           </ul>
         </div>
       </div>
 
       <div className="center_header">
         <div className="header-responsive">
-          <img src={Logo} alt="" className="logo"/>
+          <Link to="/"><img src={Logo} alt="" className="logo"/>ddddd</Link>
           <label htmlFor="nav_mobile-input"><i className="fas fa-bars"></i></label>
 
           <input type="checkbox" name="" id="nav_mobile-input" className="nav_input" />      
@@ -97,7 +83,11 @@ const Header = () => {
               }
               {
                 isLogged 
-                ? loggedRouter()
+                ? 
+                <>
+                  <li><Link to="/">User</Link></li>
+                  <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
+                </>
                 : 
                 <>
                   <li className="nav_mobile-item"><Link to="/login">Sign in</Link></li>
@@ -121,20 +111,23 @@ const Header = () => {
           <img src={Logo} alt="" className="logo"/>
 
           <div className="menu_bars">
-            <span onClick={() => setFlag(!flag)}><i className="fas fa-bars"></i> All Categories</span>
-            {
-              flag ?
-              <nav className="nav">
-                <ul className="nav__list">
-                  {
-                    categories.map(category => (
-                      <Link to="/products" key={category._id}><li className="nav__item" onClick={() => setFlag(!flag)}>{category.name}</li></Link>
-                    ))
-                  }
-                </ul>
-              </nav>
-              : <></>
-            }
+            <label htmlFor="nav_mobile-category"><i className="fas fa-bars"></i> All Categories</label>
+            <input type="checkbox" name="" id="nav_mobile-category" className="nav_category" />      
+            <label htmlFor="nav_mobile-category" className="nav__overlay-cate"></label> 
+
+            <nav className="nav_categories">
+              <div className="nav_category-close">
+                <span><i className="far fa-user"></i> {infor[0]}</span>
+                <label htmlFor="nav_mobile-category"><i className="fas fa-times"></i></label>
+              </div>
+              <ul className="nav_category-list">
+                {
+                  categories.map(category => (
+                    <Link to="/products" key={category._id}><li className="nav_category-item">{category.name}</li></Link>
+                  ))
+                }
+              </ul>
+            </nav>
           </div>
 
           <div className="search">

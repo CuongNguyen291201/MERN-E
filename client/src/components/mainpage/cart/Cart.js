@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
+import Fade from 'react-reveal/Fade';
 
 import { GlobalState } from '../../../GlobalState';
 import PaypalButton from './PaypalButton';
@@ -82,25 +83,27 @@ const Cart = () => {
     <div className="shopping-cart">
       <div className="cart-detail">
         <h5>CART <small>({cart.length} products)</small></h5>
-        {
-          cart.map(product => (
-            <div className="cart" key={product._id}>
-                <img src={product.images.url} alt="" className="img_container" />
-                <div className="box-detail">
-                  <h3>{product.title}</h3>
-                  <p>$ {product.price * product.quantity}</p>
+          {
+            cart.map(product => (
+              <Fade left key={product._id}>
+                <div className="cart">
+                  <img src={product.images.url} alt="" className="img_container" />
+                  <div className="box-detail">
+                    <h3>{product.title}</h3>
+                    <p>$ {product.price * product.quantity}</p>
 
-                  <div className="amount">
-                    <button onClick={() => decrement(product._id)}> - </button>
-                    <span>{product.quantity}</span>
-                    <button onClick={() => increment(product._id)}> + </button>
+                    <div className="amount">
+                      <button onClick={() => decrement(product._id)}> - </button>
+                      <span>{product.quantity}</span>
+                      <button onClick={() => increment(product._id)}> + </button>
+                    </div>
+
+                    <i className="fas fa-times delete" onClick={() => removeProduct(product._id)}></i>
                   </div>
-
-                  <i class="fas fa-times delete" onClick={() => removeProduct(product._id)}></i>
                 </div>
-              </div>
-          ))
-        }
+              </Fade>
+            ))
+          }
       </div>
 
       <div className="total">

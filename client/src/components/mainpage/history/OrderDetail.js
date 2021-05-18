@@ -18,7 +18,6 @@ const OrderDetail = () => {
     }
   }, [params, history])
 
-  console.log(orderDetails)
   if (orderDetails.length === 0) return null;
 
   return (
@@ -42,7 +41,7 @@ const OrderDetail = () => {
           </tbody>
         </table>
 
-        <table style={{ margin: "30px 0" }}>
+        <table>
           <thead>
             <tr>
               <th></th>

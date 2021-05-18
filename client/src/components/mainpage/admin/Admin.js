@@ -20,6 +20,8 @@ const Admin = () => {
     }
   }, [params, history])
 
+  console.log(history)
+
   return (
     <div>
       <input type="checkbox" id="sidebar-toggle" />
@@ -145,7 +147,7 @@ const Admin = () => {
           </div>
                   
           <section className="recent">
-            <div className="activity-grid">
+            <div className="activity-payment">
               <div className="activity-card">
                   <h3>Payment</h3>
                   
@@ -153,51 +155,44 @@ const Admin = () => {
                     <table>
                       <thead>
                         <tr>
-                          <th>Payment ID</th>
-                          <th>Date Of Purchased</th>
-                          <th></th>
+                          <th>Order</th>
+                          <th>Date Of Ordered</th>
+                          <th>Address</th>
+                          <th>Quantity</th>
+                          <th>Total Money</th>
                         </tr>
                       </thead>
                       <tbody>
                         {
                           history.map(item => (
                             <tr key={item._id}>
-                              <td>{item.paymentID}</td>
+                              <td className="td-team">
+                                {
+                                  item.cart.map(product => (
+                                    <img src={product.images.url} alt="" className="img" key={product._id}/>
+                                  ))
+                                }
+                              </td>
                               <td>{new Date(item.createdAt).toDateString()}</td>
-                              <td><Link to={`/admin/${item._id}`}>View</Link></td>
+                              <td>{item.address.recipient_name + " - " + item.address.line1 + " - " + item.address.city + " - " + item.address.country_code}</td>
+                              <td>
+                                {
+                                  item.cart.map(product => (
+                                    <p key={product._id}><span>{product.title + " - " + product.quantity}</span></p>
+                                  ))
+                                }
+                              </td>
+                              <td>
+                                {
+                                  item.cart.reduce((pre, product) => pre + (product.quantity * product.price), 0)
+                                }
+                              </td>
                             </tr>
                           ))
                         }
                       </tbody>
                     </table>
                   </div>
-              </div>
-              
-              <div className="summary">
-                <div className="summary-card">
-                  <div className="summary-single">
-                    <span className="ti-id-badge"></span>
-                    <div>
-                      <h5>196</h5>
-                      <small>Number of staff</small>
-                    </div>
-                  </div>
-                  <div className="summary-single">
-                    <span className="ti-calendar"></span>
-                    <div>
-                      <h5>16</h5>
-                      <small>Number of leave</small>
-                    </div>
-                  </div>
-                  <div className="summary-single">
-                    <span className="ti-face-smile"></span>
-                    <div>
-                      <h5>12</h5>
-                      <small>Profile update request</small>
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>  
           </section>

@@ -55,7 +55,6 @@ const Products = () => {
               return <ProductItem key={product._id} product={product}/>
             })
           }
-
         </div>
       </div>
       {

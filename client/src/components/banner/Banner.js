@@ -1,10 +1,10 @@
 import React from 'react'
 
 import Women from './img/banner-women.png';
-import Men from './img/banner-men.jpg';
 import Vehicle from './img/banner-vehicle.jpg';
 import Sale from './img/banner-sales.jpg';
 import Home from '../home/Home';
+import BigSale from './img/bigsale.jpg';
 
 const Banner = () => {
   return (
@@ -20,7 +20,7 @@ const Banner = () => {
               <img src={Women} alt=""/>
             </div>
             <div className="slide">
-              <img src={Men} alt=""/>
+              <img src={BigSale} alt=""/>
             </div>
             <div className="slide">
               <img src={Vehicle} alt=""/>
