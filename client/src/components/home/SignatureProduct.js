@@ -7,10 +7,12 @@ const SignatureProduct = () => {
   const state = useContext(GlobalState);
   const [products] = state.productsAPI.products;
   const [category, setCategory] = state.productsAPI.category;
+  const [search, setSearch] = state.productsAPI.search;
 
   useEffect(() => {
     setCategory("category=Signature")
-  }, [setCategory])
+    setSearch('')
+  }, [setCategory, setSearch])
 
   return (
     <div className="home">

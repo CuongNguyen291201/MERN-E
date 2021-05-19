@@ -134,7 +134,7 @@ main {
 
 .dash-create input {
     outline: none;
-    width: 50%;
+    width: 80%;
 }
 
 .dash-create button {
@@ -158,7 +158,6 @@ main {
 
 .card-body {
     padding: 1.3rem 1rem;
-    /* display: flex; */
     align-items: center;
 }
 

@@ -62,7 +62,7 @@ const Category = () => {
       <h2 className="dash-title">Category</h2>
       
       <div className="dash-create">
-        <div className="card-single">
+        <div className="card-single card-add-category">
           <div className="card-body">
             <div>
               <h5>Name</h5>
@@ -116,26 +116,11 @@ const Category = () => {
               <div className="summary-single">
                 <span className="ti-id-badge"></span>
                 <div>
-                  <h5>196</h5>
-                  <small>Number of staff</small>
-                </div>
-              </div>
-              <div className="summary-single">
-                <span className="ti-calendar"></span>
-                <div>
-                  <h5>16</h5>
-                  <small>Number of leave</small>
-                </div>
-              </div>
-              <div className="summary-single">
-                <span className="ti-face-smile"></span>
-                <div>
-                  <h5>12</h5>
-                  <small>Profile update request</small>
+                  <h5>{categories.length}</h5>
+                  <small>Number of categories</small>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>

@@ -8,11 +8,13 @@ const FeatureProduct = () => {
   const [products] = state.productsAPI.products;
   const [page, setPage] = state.productsAPI.page;
   const [sort, setSort] = state.productsAPI.sort;
-      
+  const [search, setSearch] = state.productsAPI.search; 
+
   useEffect(() => {
     setPage(1/3)
     setSort('sort=-sold')
-  }, [setPage, setSort])
+    setSearch('')
+  }, [setPage, setSort, setSearch])
   
   return (
     <div className="home">

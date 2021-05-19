@@ -26,6 +26,8 @@ const CreateProduct = () => {
   const [isAdmin] = state.userAPI.isAdmin;
   const [page, setPage] = state.productsAPI.page;
   const [sort, setSort] = state.productsAPI.sort;
+  const [category, setCategory] = state.productsAPI.category;
+  const [search, setSearch] = state.productsAPI.search; 
 
   const [product, setProduct] = useState(initialState);
   const [images, setImages] = useState(false);
@@ -34,6 +36,13 @@ const CreateProduct = () => {
 
   const params = useParams();
   const history = useHistory();
+
+  useEffect(() => {
+    setPage(10)
+    setSort('')
+    setCategory('')
+    setSearch('')
+  }, [setPage, setSort, setCategory, setSearch])
 
   useEffect(() => {
     if (params.id) {
@@ -50,11 +59,6 @@ const CreateProduct = () => {
       setImages(false)
     }
   }, [params, products])
-
-  useEffect(() => {
-    setPage(10)
-    setSort('')
-  }, [setPage, setSort])
 
   const styleUpload = {
     display: images ? "block" : "none"
@@ -255,22 +259,8 @@ const CreateProduct = () => {
               <div className="summary-single">
                 <span className="ti-id-badge"></span>
                 <div>
-                  <h5>196</h5>
-                  <small>Number of staff</small>
-                </div>
-              </div>
-              <div className="summary-single">
-                <span className="ti-calendar"></span>
-                <div>
-                  <h5>16</h5>
-                  <small>Number of leave</small>
-                </div>
-              </div>
-              <div className="summary-single">
-                <span className="ti-face-smile"></span>
-                <div>
-                  <h5>12</h5>
-                  <small>Profile update request</small>
+                  <h5>{products.length}</h5>
+                  <small>Number of products</small>
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { GlobalState } from '../../../GlobalState';
 import CreateProduct from './create-product/CreateProduct';
@@ -8,19 +8,7 @@ import Category from './category/Category';
 const Admin = () => {
   const state = useContext(GlobalState);
   const [history] = state.userAPI.history;
-
-  const [paymentDetail, setPaymentDetail] = useState([])
-  const params = useParams();
-
-  useEffect(() => {
-    if (params.id) {
-      history.forEach(item => {
-        if (item._id === params.id) setPaymentDetail(item)
-      })
-    }
-  }, [params, history])
-
-  console.log(history)
+  const [products] = state.productsAPI.products;
 
   return (
     <div>
@@ -110,25 +98,15 @@ const Admin = () => {
               <div className="card-body">
                 <span className="ti-briefcase"></span>
                 <div>
-                  <h5>Account Balance</h5>
-                  <h4>$30,659.45</h4>
+                  <h5>Total Revenue</h5>
+                  <h4>
+                  ${
+                    history.reduce((prev, item) => prev + (
+                      item.cart.reduce((pre, product) => pre + (product.quantity * product.price), 0)
+                    ), 0)  
+                  }
+                  </h4>
                 </div>
-              </div>
-              <div className="card-footer">
-                <Link to="!#">View all</Link>
-              </div>
-            </div>
-                  
-            <div className="card-single">
-              <div className="card-body">
-                <span className="ti-reload"></span>
-                <div>
-                  <h5>Pending</h5>
-                  <h4>$19,500.45</h4>
-                </div>
-              </div>
-              <div className="card-footer">
-                <Link to="!#">View all</Link>
               </div>
             </div>
                   
@@ -136,12 +114,13 @@ const Admin = () => {
               <div className="card-body">
                 <span className="ti-check-box"></span>
                 <div>
-                  <h5>Processed</h5>
-                  <h4>$20,659</h4>
+                  <h5>Number of Products Sold</h5>
+                  <h4>
+                  {
+                    products.reduce((pre, product) => pre + product.sold, 0)
+                  }
+                  </h4>
                 </div>
-              </div>
-              <div className="card-footer">
-                <Link to="!#">View all</Link>
               </div>
             </div>
           </div>
@@ -183,7 +162,7 @@ const Admin = () => {
                                 }
                               </td>
                               <td>
-                                {
+                                ${
                                   item.cart.reduce((pre, product) => pre + (product.quantity * product.price), 0)
                                 }
                               </td>
@@ -196,36 +175,6 @@ const Admin = () => {
               </div>
             </div>  
           </section>
-          
-          {/* {
-            params.id ? 
-              <div className="payment-infor table-responsive">
-                <table>
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th>Product</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      paymentDetail.cart.map(item => (
-                        <tr key={item._id}>
-                          <td><img src={item.images.url} alt=""/></td>
-                          <td>{item.title}</td>
-                          <td>{item.quantity}</td>
-                          <td>{item.quantity * item.price}</td>
-                        </tr>
-                      ))
-                    }
-                  </tbody>
-                </table>
-              </div>
-            : <div></div>
-          } */}
-
         </main>
         <Category />
 

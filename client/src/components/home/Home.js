@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import FeatureProduct from './FeatureProduct';
 import SignatureProduct from './SignatureProduct';
 
-
 const Home = () => {
   return (
     <>

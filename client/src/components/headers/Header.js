@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import './header.css';
@@ -17,10 +17,13 @@ const Header = () => {
 
   const [handleSearch, setHandleSearch] = useState('');
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
-    e.preventDefault()
     setSearch(handleSearch)
     setHandleSearch('')
+    history.push('/products')
+    e.preventDefault()
   }
 
   const logoutUser = async () => {
@@ -42,7 +45,7 @@ const Header = () => {
             <li><Link to="/">Blog</Link></li>
             { isAdmin 
               ? <li><Link to="/admin">My Admin</Link></li> 
-              : <li><Link to="/">My wishlist</Link></li>
+              : <li><Link to="/history">History</Link></li>
             }
             {
               isLogged 
@@ -63,7 +66,7 @@ const Header = () => {
 
       <div className="center_header">
         <div className="header-responsive">
-          <Link to="/"><img src={Logo} alt="" className="logo"/>ddddd</Link>
+          <Link to="/"><span><img src={Logo} alt="" className="logo"/></span></Link>
           <label htmlFor="nav_mobile-input"><i className="fas fa-bars"></i></label>
 
           <input type="checkbox" name="" id="nav_mobile-input" className="nav_input" />      
