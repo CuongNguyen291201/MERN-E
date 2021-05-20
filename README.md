@@ -22,7 +22,7 @@
 ## ![alt](https://res.cloudinary.com/dp1stgl3a/image/upload/v1621442506/home-page_yx8zww.png)
 
 ## Cart Page
-## ![alt](https://res.cloudinary.com/dp1stgl3a/image/upload/v1621443164/cart_dyww8e.png)
+## ![alt](https://res.cloudinary.com/dp1stgl3a/image/upload/v1621487114/cart_2_gjjxme.png)
 
 ## Admin Page
 ## ![alt](https://res.cloudinary.com/dp1stgl3a/image/upload/v1621442558/admin_zkxlbt.png)
