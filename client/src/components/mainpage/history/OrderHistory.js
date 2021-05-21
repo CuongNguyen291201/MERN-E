@@ -34,7 +34,6 @@ const OrderHistory = () => {
           </tbody>
         </table>
       </div>
-
     </div>
   )
 }

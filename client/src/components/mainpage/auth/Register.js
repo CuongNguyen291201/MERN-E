@@ -9,10 +9,8 @@ const Register = () => {
   const [user, setUser] = useState({
     name: '', email: '', password: '', cf_password: ''
   })
-  const [error, setError] = useState({})
-  // const [checkPass, setCheckPass] = useState(false)
-  // const [checkCfPass, setCheckCfPass] = useState(false)
-
+  const [error, setError] = useState({});
+  
   const handleChange = (e) => {
     const {name, value} = e.target;
     setUser({...user, [name]: value})
@@ -63,15 +61,15 @@ const Register = () => {
         <div className="form-group">
           <label htmlFor="exampleInputPassword1">Password</label>
           <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={user.password} onChange={handleChange} />
-        
+
           <small className="form-text text-danger">
             {error.password ? error.password : ''}
           </small>
         </div>
         <div className="form-group">
           <label htmlFor="exampleInputConfirmPassword1">Confirm Password</label>
-          <input type="password" className="form-control" id="exampleInputConfirmPassword1" name="cf_password" value={user.cf_password} onChange={handleChange} />
-        
+          <input type="password"  className="form-control" id="exampleInputConfirmPassword1" name="cf_password" value={user.cf_password} onChange={handleChange} />
+
           <small className="form-text text-danger">
             {error.cf_password ? error.cf_password : ''}
           </small>

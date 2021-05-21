@@ -6,15 +6,13 @@ import ProductItem from '../mainpage/utils/productItem/ProductItem';
 const FeatureProduct = () => {
   const state = useContext(GlobalState);
   const [products] = state.productsAPI.products;
-  const [page, setPage] = state.productsAPI.page;
   const [sort, setSort] = state.productsAPI.sort;
   const [search, setSearch] = state.productsAPI.search; 
 
   useEffect(() => {
-    setPage(1/3)
     setSort('sort=-sold')
     setSearch('')
-  }, [setPage, setSort, setSearch])
+  }, [setSort, setSearch])
   
   return (
     <div className="home">

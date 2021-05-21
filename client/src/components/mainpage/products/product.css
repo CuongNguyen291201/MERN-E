@@ -7,10 +7,21 @@
   width: 20%;
   box-shadow: 0 0 3px #dddddd;
   margin: 30px 0;  
+  padding: 10px;
 }
 
 .filter-products select {
   outline: none;
+  border-radius: 5px;
+  width: 90%;
+  padding: 5px;
+  border: 1px solid lightblue;
+}
+
+.filter-products select option {
+  border: none;
+  outline: none;
+  margin: 10px 0;
 }
 
 .products {
@@ -65,7 +76,13 @@
     margin: 0 0 0 20px;
   }
   .product-all button {
-    left: 40%;
+    left: 45%;
+  }
+}
+
+@media only all and (max-width: 426px) {
+  .product-all button {
+    left: 36%;
   }
 }
 

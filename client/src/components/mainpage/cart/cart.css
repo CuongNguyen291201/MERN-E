@@ -98,6 +98,28 @@
   color: crimson;
 }
 
+.no-products {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.no-products img {
+  width: 30%;
+  height: 30%;
+  margin: 0 auto; 
+}
+
+.no-products a {
+  background: lightblue;
+  color: white;
+  width: 20%;
+  padding: 1rem 2rem;
+  border-radius: 3px;
+  margin: 0 auto;
+  outline: none;
+}
+
 @media only all and (min-width: 320px) and (max-width: 1024px) {
   .shopping-cart {
     display: flex;
@@ -111,5 +133,22 @@
   .total {
     width: 80%;
     margin: 2rem auto 0;
+  }
+}
+
+@media only all and (max-width: 426px) {
+  .no-products img {
+    width: 50%;
+    height: 50%; 
+  }
+
+  .no-products a {
+    width: 70%;
+  }
+}
+
+@media only all and (min-width: 768px) and (max-width: 1024px) {
+  .no-products a {
+    width: 50%;
   }
 }

@@ -31,26 +31,26 @@
   display: block;
 }
 
-.box-detail {
+.detail-product {
   max-width: 300px;
   width: 100%;
   margin: 20px;
 }
 
-.box-detail h3 {
+.detail-product h3 {
   text-transform: capitalize;
   color: darkblue;
   letter-spacing: 2px;
   font-weight: 1rem;
 }
 
-.box-detail p {
+.detail-product p {
   line-height: 1.5;
   margin: 10px 0;
   opacity: 0.8;
 }
 
-.box-detail .cart {
+.detail-product .cart {
   background: #333;
   color: white;
   font-size: 1.3rem;

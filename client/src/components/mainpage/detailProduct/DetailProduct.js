@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Zoom from 'react-reveal/Zoom';
 
 import { GlobalState } from '../../../GlobalState';
 import ProductItem from '../utils/productItem/ProductItem';
@@ -23,8 +24,10 @@ const DetailProduct = () => {
   return (
     <>
       <div className="detail">
-        <img src={detailProduct.images.url} alt=""/>
-        <div className="box-detail">
+        <Zoom>
+          <img src={detailProduct.images.url} alt=""/>
+        </Zoom>
+        <div className="detail-product">
           <div className="row">
             <h3>{detailProduct.title}</h3>
           </div>

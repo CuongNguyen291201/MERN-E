@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import Zoom from 'react-reveal/Zoom';
 
 import { GlobalState } from '../../../GlobalState';
 
@@ -66,7 +67,11 @@ const OrderDetail = () => {
                 {
                   orderDetails.cart.map(item => (
                     <tr key={item._id}>
-                      <td><img src={item.images.url} alt=""/></td>
+                      <td>
+                        <Zoom>
+                          <img src={item.images.url} alt=""/>
+                        </Zoom>
+                      </td>
                       <td>{item.title}</td>
                       <td>{item.quantity}</td>
                       <td>${item.price * item.quantity}</td>

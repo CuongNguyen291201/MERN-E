@@ -306,6 +306,10 @@
   .header__search-responsive input {
     width: 100%;
   }
+
+  .center_header {
+    border: none;
+  }
 }
 
 @keyframes fadeIn {

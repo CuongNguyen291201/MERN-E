@@ -2,9 +2,11 @@ import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
 import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
 
 import { GlobalState } from '../../../GlobalState';
 import PaypalButton from './PaypalButton';
+import Empty from './img/logo-cart.png'
 
 const Cart = () => {
   const state = useContext(GlobalState);
@@ -77,7 +79,15 @@ const Cart = () => {
     setCallback(!callback)
   }
 
-  if (cart.length === 0) return <h2 style={{ textAlign: 'center', fontSize: '5rem'}}>Cart Empty</h2>
+  if (cart.length === 0) {
+    return (
+      <div className="shopping-cart no-products">
+        <img src={Empty} alt=""/>
+        <p>There are no products in your shopping cart.</p>
+        <Link to="/products">Keep shopping</Link>
+      </div>
+    )
+  }
     
   return (
     <div className="shopping-cart">
