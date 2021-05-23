@@ -9,8 +9,9 @@ const SignatureProduct = () => {
   const [category, setCategory] = state.productsAPI.category;
   const [search, setSearch] = state.productsAPI.search;
 
+  setCategory("category=Signature")
   useEffect(() => {
-    setCategory("category=Signature")
+    setCategory('category=')
     setSearch('')
   }, [setCategory, setSearch])
 

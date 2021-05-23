@@ -1,0 +1,32 @@
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.not-found h2 {
+  margin: 40px 0;
+  font-size: 1.8rem;
+}
+
+.not-found img {
+  width: 95%;
+}
+
+.not-found h4 {
+  margin: 40px 0 20px;
+  font-size: 1.2rem;
+}
+
+.not-found a {
+  background: #6c63ff;
+  padding: 15px;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 6px;
+}

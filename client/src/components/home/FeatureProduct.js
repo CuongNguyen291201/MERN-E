@@ -8,15 +8,19 @@ const FeatureProduct = () => {
   const [products] = state.productsAPI.products;
   const [sort, setSort] = state.productsAPI.sort;
   const [search, setSearch] = state.productsAPI.search; 
+  const [page, setPage] = state.productsAPI.page;
+  const [category, setCategory] = state.productsAPI.category;
 
   useEffect(() => {
     setSort('sort=-sold')
     setSearch('')
-  }, [setSort, setSearch])
+    setPage(2/3)
+    setCategory('')
+  }, [setSort, setSearch, setPage, setCategory])
   
   return (
     <div className="home">
-      <h5>Featured products</h5>
+      <h5>Today's Suggestions</h5>
       <div className="products-home"> 
         {
           products.map(product => (

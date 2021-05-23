@@ -14,6 +14,7 @@ import Admin from './admin/Admin';
 import CreateProduct from './admin/create-product/CreateProduct'; 
 
 import { GlobalState } from '../../GlobalState';
+import SignatureProduct from '../home/SignatureProduct';
 
 const Pages = () => {
   const state = useContext(GlobalState);
@@ -23,6 +24,7 @@ const Pages = () => {
   return (
     <Switch>
       <Route path="/" exact component={Banner} />
+      <Route path="/" exact component={SignatureProduct} />
 
       <Route path="/products" exact component={Products} />
       <Route path="/detail/:id" exact component={DetailProduct} />

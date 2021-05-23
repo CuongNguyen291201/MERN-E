@@ -41,7 +41,6 @@ const Header = () => {
           </div>
 
           <ul>
-            <li><Link to="/">Store Location</Link></li>
             <li><Link to="/">Blog</Link></li>
             { isAdmin 
               ? <li><Link to="/admin">My Admin</Link></li> 
@@ -78,7 +77,6 @@ const Header = () => {
               <label htmlFor="nav_mobile-input"><i className="fas fa-times"></i></label>
             </div>
             <ul className="nav_mobile-list">
-              <li className="nav_mobile-item"><Link to="/">Store Location</Link></li>
               <li className="nav_mobile-item"><Link to="/">Blog</Link></li>
               { isAdmin 
                 ? <li className="nav_mobile-item"><Link to="/admin">My Admin</Link></li> 
@@ -114,7 +112,7 @@ const Header = () => {
           <img src={Logo} alt="" className="logo"/>
 
           <div className="menu_bars">
-            <label htmlFor="nav_mobile-category"><i className="fas fa-bars"></i> All Categories</label>
+            <label htmlFor="nav_mobile-category" className="menu_bars-category"><i className="fas fa-bars"></i> All Categories</label>
             <input type="checkbox" name="" id="nav_mobile-category" className="nav_category" />      
             <label htmlFor="nav_mobile-category" className="nav__overlay-cate"></label> 
 

@@ -76,3 +76,6 @@ button {
 
 /* ----------------- Footer --------------- */
 @import url("./components/footer/footer.css");
+
+/* ----------------- NotFound -------------- */
+@import url("./components/mainpage/utils/not-found/notfound.css");

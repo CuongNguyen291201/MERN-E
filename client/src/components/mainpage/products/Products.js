@@ -15,8 +15,8 @@ const Products = () => {
 
   useEffect(() => {
     setCategory('')
-    setSort('')
-    setPage(1)
+    setSort('') 
+    setPage(12/9)
   }, [setCategory, setSort, setPage])
 
   return (

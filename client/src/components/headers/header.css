@@ -142,6 +142,10 @@
   display: none;
 }
 
+.menu_bars-category {
+  margin: 0;
+}
+
 .nav__overlay {
   position: fixed;
   top: 0;
