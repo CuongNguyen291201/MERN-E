@@ -42,7 +42,7 @@ ul li {
 }
 
 button {
-  outline: none;
+  outline: none !important;
   background: transparent;
   cursor: pointer;
 }

@@ -37,7 +37,7 @@ const Header = () => {
       <div className="option_header">
         <div className="option_header-content">
           <div className="languages">
-            <p>Vi-VN | En-US</p>
+            <p id="language">Vi-VN | En-US</p>
           </div>
 
           <ul>
