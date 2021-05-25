@@ -1,10 +1,10 @@
 import React from 'react'
 
 import Women from './img/banner-women.png';
-import Vehicle from './img/banner-vehicle.jpg';
 import Sale from './img/banner-sales.jpg';
 import Home from '../home/Home';
-import BigSale from './img/bigsale.jpg';
+import BannerSale from './img/banner-sale.jpg';
+import BlackFriday from './img/black-friday.jpg';
 
 const Banner = () => {
   return (
@@ -20,10 +20,10 @@ const Banner = () => {
               <img src={Women} alt=""/>
             </div>
             <div className="slide">
-              <img src={BigSale} alt=""/>
+              <img src={BlackFriday} alt=""/>
             </div>
             <div className="slide">
-              <img src={Vehicle} alt=""/>
+              <img src={BannerSale} alt=""/>
             </div>
           </div>
 

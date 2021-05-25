@@ -35,3 +35,10 @@ table a {
   height: 100px;
   object-fit: cover;
 }
+
+.history-view a{
+  background: #87DDDA;
+  color: white;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+}

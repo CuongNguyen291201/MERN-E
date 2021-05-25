@@ -31,13 +31,24 @@
   margin: 10px 0;
 }
 
+.home-button button:hover {
+  background: lightblue;
+  transition: 0.2s linear;
+}
+
 @media only all and (min-width: 320px) and (max-width: 1024px) {
   .home {
     width: 100%;
   }
 }
 
-@media only all and (min-width: 2560px) {
+@media only all and (min-width: 1600px) {
+  .home {
+    width: 45%;
+  }
+}
+
+@media only all and (min-width: 2561px) {
   .home {
     width: 40%;
   }
