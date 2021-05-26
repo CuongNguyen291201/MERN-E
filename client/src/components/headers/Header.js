@@ -124,7 +124,7 @@ const Header = () => {
               <ul className="nav_category-list">
                 {
                   categories.map(category => (
-                    <Link to="/products" key={category._id}><li className="nav_category-item">{category.name}</li></Link>
+                    <Link to="/products" key={category._id}><label htmlFor="nav_mobile-category"><li className="nav_category-item">{category.name}</li></label></Link>
                   ))
                 }
               </ul>
