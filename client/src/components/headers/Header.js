@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -31,6 +31,9 @@ const Header = () => {
     localStorage.removeItem('Login'); 
     window.location.href = '/';
   }
+
+  useEffect(() => {
+  }, [search])
 
   return (
     <header>

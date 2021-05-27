@@ -60,8 +60,9 @@ const UserAPI = (token) => {
       await axios.patch('/user/addcart', {cart: [...cart, {...product, quantity: 1}]}, {
         headers: {Authorization: token}
       })
+      swal("Thank you!", "This product has been added to cart!", "success");
     } else {
-      swal("Thank you!", "This product has been added to cart!", "info");
+      swal("Thank you!", "This product is already in your cart!", "info");
     }
   } 
 

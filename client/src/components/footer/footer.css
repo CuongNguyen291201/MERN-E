@@ -7,6 +7,11 @@
   margin: 1rem auto;
 }
 
+.footer a {
+  color: black;
+  font-weight: 300;
+}
+
 .footer-infor {
   display: flex;
   justify-content: space-between

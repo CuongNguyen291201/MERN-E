@@ -15,8 +15,12 @@
   align-items: center;
 }
 
-.option_header-content .languages {
-  flex: 1;
+.option_header-content #language {
+  margin: 0;
+}
+
+.option_header-content ul {
+  margin: .5rem 0;
 }
 
 .option_header-content ul li {
@@ -140,6 +144,10 @@
 
 .header-responsive, .header__search-responsive {
   display: none;
+}
+
+.header-responsive i {
+  color: white !important;
 }
 
 .menu_bars-category {

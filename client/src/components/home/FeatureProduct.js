@@ -16,7 +16,7 @@ const FeatureProduct = () => {
     setSearch('')
     setPage(2/3)
     setCategory('')
-  }, [setSort, setSearch, setPage, setCategory])
+  }, [setSort, setSearch, setPage, setCategory, sort, search, page, category])
   
   return (
     <div className="home">

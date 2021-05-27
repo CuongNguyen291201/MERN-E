@@ -13,7 +13,7 @@ const SignatureProduct = () => {
   useEffect(() => {
     setCategory('category=')
     setSearch('')
-  }, [setCategory, setSearch])
+  }, [setCategory, setSearch, category, search])
 
   return (
     <div className="home">

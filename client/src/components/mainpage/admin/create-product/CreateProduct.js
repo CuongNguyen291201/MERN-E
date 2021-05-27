@@ -42,7 +42,7 @@ const CreateProduct = () => {
     setSort('')
     setCategory('')
     setSearch('')
-  }, [setPage, setSort, setCategory, setSearch])
+  }, [setPage, setSort, setCategory, setSearch, category, page, search, sort])
 
   useEffect(() => {
     if (params.id) {
@@ -110,6 +110,7 @@ const CreateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      setLoading(true)
       if (!isAdmin) return swal("Error", "You're not an admin.", "error")
       if (!images) return swal("Error", "No image upload.", "error")  
       
@@ -122,8 +123,11 @@ const CreateProduct = () => {
           headers: {Authorization: token}
         })  
       }
+      setLoading(false);
       setCallback(!callback)
-      history.push('/admin')
+      if (edit) {
+        history.push('/admin')
+      }
     } catch (err) {
       swal("Error", err.response.data.msg, "error")
     }
@@ -142,13 +146,15 @@ const CreateProduct = () => {
 
       await destroyImg
       await deleteProduct
-      setCallback(!callback)
       setLoading(false)
+      setCallback(!callback)
       history.push('/admin')
     } catch (err) {
       swal("Error", err.response.data.msg, "error")
     }
   }
+
+  if (loading) return <div><Loading /></div>
 
   return (
     <main>    
@@ -244,7 +250,7 @@ const CreateProduct = () => {
                         </td>
                         <td>
                           <Link to={`/admin/edit-product/${product._id}`} style={{marginRight: '5px'}}>Edit</Link>
-                          <Link to="/admin/create-product" onClick={() => deleteProduct(product._id, product.images.public_id)}>Delete</Link>
+                          <Link to="/admin" onClick={() => deleteProduct(product._id, product.images.public_id)}>Delete</Link>
                         </td>
                       </tr>
                     ))
