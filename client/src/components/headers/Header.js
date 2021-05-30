@@ -112,7 +112,7 @@ const Header = () => {
         </div>
 
         <div className="header">
-          <Link to="/"><img src={Logo} alt="" className="logo"/></Link>
+          <Link to="/"><img src={Logo} alt="" className="logo" /></Link>
 
           <div className="menu_bars">
             <label htmlFor="nav_mobile-category" className="menu_bars-category"><i className="fas fa-bars"></i> All Categories</label>

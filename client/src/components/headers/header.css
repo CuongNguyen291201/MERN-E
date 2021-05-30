@@ -271,10 +271,10 @@
   color: #03B9B0;
 }
 
-.fa-bars {
-  color: lightcoral;
-  font-size: 20px;
-}
+.fa-bars { 
+  color: lightcoral; 
+  font-size: 20px; 
+} 
 
 @media only all and (min-width: 320px) and (max-width: 1024px) {
   .center_header .search input {
