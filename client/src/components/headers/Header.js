@@ -68,7 +68,7 @@ const Header = () => {
 
       <div className="center_header">
         <div className="header-responsive">
-          <Link to="/"><span><img src={Logo} alt="" className="logo"/></span></Link>
+          <Link to="/"><img src={Logo} alt="" className="logo"/></Link>
           <label htmlFor="nav_mobile-input"><i className="fas fa-bars"></i></label>
 
           <input type="checkbox" name="" id="nav_mobile-input" className="nav_input" />      
@@ -76,7 +76,7 @@ const Header = () => {
 
           <nav className="nav_mobile">
             <div className="nav_mobile-close">
-              <span><i className="far fa-user"></i> {infor[0]}</span>
+              <span><i className="far fa-user user-icon"></i> {infor[0]}</span>
               <label htmlFor="nav_mobile-input"><i className="fas fa-times"></i></label>
             </div>
             <ul className="nav_mobile-list">
@@ -112,7 +112,7 @@ const Header = () => {
         </div>
 
         <div className="header">
-          <img src={Logo} alt="" className="logo"/>
+          <Link to="/"><img src={Logo} alt="" className="logo"/></Link>
 
           <div className="menu_bars">
             <label htmlFor="nav_mobile-category" className="menu_bars-category"><i className="fas fa-bars"></i> All Categories</label>
@@ -120,29 +120,32 @@ const Header = () => {
             <label htmlFor="nav_mobile-category" className="nav__overlay-cate"></label> 
 
             <nav className="nav_categories">
-              <div className="nav_category-close">
-                <span><i className="far fa-user"></i> {infor[0]}</span>
+              <div className="nav_category-close">  
+                <span><i className="far fa-user user-icon"></i> {infor[0]}</span>
                 <label htmlFor="nav_mobile-category"><i className="fas fa-times"></i></label>
               </div>
-              <ul className="nav_category-list">
-                {
-                  categories.map(category => (
-                    <Link to="/products" key={category._id}><label htmlFor="nav_mobile-category"><li className="nav_category-item">{category.name}</li></label></Link>
-                  ))
-                }
-              </ul>
+              <div className="nav_categories-item">
+                <h5><i className="fas fa-th-large" style={{ color: '#03B9B0'}}></i> Category</h5>
+                <ul className="nav_category-list"   >
+                  {
+                    categories.map(category => (
+                      <Link to="/products" key={category._id}><li className="nav_category-item"><label htmlFor="nav_mobile-category">{category.name}</label></li></Link>
+                    ))
+                  }
+                </ul>
+              </div>
             </nav>
           </div>
 
           <div className="search">
             <form onSubmit={handleSubmit}>
               <input type="text" name="search" id="search" placeholder="Search for products" value={handleSearch} onChange={(e) => setHandleSearch(e.target.value.toLowerCase())}/>
-              <button type="submit">Search</button>
+              {handleSearch ? <button type="submit">Search</button> : <button type="submit" disabled>Search</button>}
             </form>
           </div>
 
           <div className="user">
-            <span><i className="far fa-user"></i> {infor[0]}</span>
+            <span><i className="far fa-user user-icon user-animation"></i> {infor[0]}</span>
           </div>
 
           <div className="user-cart">

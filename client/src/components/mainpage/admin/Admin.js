@@ -128,50 +128,50 @@ const Admin = () => {
           <section className="recent">
             <div className="activity-payment">
               <div className="activity-card">
-                  <h3>Payment</h3>
+                <h3>Payment</h3>
                   
-                  <div className="table-responsive">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Order</th>
-                          <th>Date Of Ordered</th>
-                          <th>Address</th>
-                          <th>Quantity</th>
-                          <th>Total Money</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {
-                          history.map(item => (
-                            <tr key={item._id}>
-                              <td className="td-team">
-                                {
-                                  item.cart.map(product => (
-                                    <img src={product.images.url} alt="" className="img" key={product._id}/>
-                                  ))
-                                }
-                              </td>
-                              <td>{new Date(item.createdAt).toDateString()}</td>
-                              <td>{item.address.recipient_name + " - " + item.address.line1 + " - " + item.address.city + " - " + item.address.country_code}</td>
-                              <td>
-                                {
-                                  item.cart.map(product => (
-                                    <p key={product._id}><span>{product.title + " - " + product.quantity}</span></p>
-                                  ))
-                                }
-                              </td>
-                              <td>
-                                ${
-                                  item.cart.reduce((pre, product) => pre + (product.quantity * product.price), 0)
-                                }
-                              </td>
-                            </tr>
-                          ))
-                        }
-                      </tbody>
-                    </table>
-                  </div>
+                <div className="table-responsive">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Order</th>
+                        <th>Date Of Ordered</th>
+                        <th>Address</th>
+                        <th>Quantity</th>
+                        <th>Total Money</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        history.map(item => (
+                          <tr key={item._id}>
+                            <td className="td-team">
+                              {
+                                item.cart.map(product => (
+                                  <img src={product.images.url} alt="" className="img" key={product._id}/>
+                                ))
+                              }
+                            </td>
+                            <td>{new Date(item.createdAt).toDateString()}</td>
+                            <td>{item.address.recipient_name + " - " + item.address.line1 + " - " + item.address.city + " - " + item.address.country_code}</td>
+                            <td>
+                              {
+                                item.cart.map(product => (
+                                  <p key={product._id}><span>{product.title + " - " + product.quantity}</span></p>
+                                ))
+                              }
+                            </td>
+                            <td>
+                              ${
+                                item.cart.reduce((pre, product) => pre + (product.quantity * product.price), 0)
+                              }
+                            </td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>  
           </section>

@@ -35,6 +35,10 @@ ul li {
   list-style: none;
 }
 
+i {
+  cursor: pointer;
+}
+
 button {
   outline: none !important;
   background: transparent;
@@ -73,3 +77,6 @@ button {
 
 /* ----------------- NotFound -------------- */
 @import url("./components/mainpage/utils/not-found/notfound.css");
+
+/* ----------------- Loading --------------- */
+@import url("./components/mainpage/utils/loading/loading.css");
