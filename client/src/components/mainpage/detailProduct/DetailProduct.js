@@ -32,12 +32,12 @@ const DetailProduct = () => {
             <h3>{detailProduct.title}</h3>
           </div>
           <p>$ {detailProduct.price}</p>
-          <Link 
+          <p 
             to="/cart" className="cart"
             onClick={() => addCart(detailProduct)}
           >
             Add to Cart
-          </Link>
+          </p>
           <p>Sold: {detailProduct.sold}</p>
           <p>Shop secure. Free Returns</p>
           <p>Share: 
