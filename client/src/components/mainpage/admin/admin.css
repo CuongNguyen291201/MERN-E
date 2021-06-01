@@ -485,6 +485,6 @@ tbody tr:nth-child(even) {
 
 @media only screen and (max-width: 321px) {
     #file_up::before {
-        left: -10%;
+        left: -2%;
     }   
 }

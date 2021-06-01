@@ -39,7 +39,7 @@
 
 .detail-product h3 {
   text-transform: capitalize;
-  color: darkblue;
+  color: #333;
   letter-spacing: 2px;
   font-weight: 1rem;
 }
@@ -48,6 +48,10 @@
   line-height: 1.5;
   margin: 10px 0;
   opacity: 0.8;
+}
+
+.detail-product p:first-child {
+  font-size: 30px !important;
 }
 
 .detail-product .cart {
@@ -61,6 +65,11 @@
   border-radius: 3px;
   cursor: pointer;
   text-align: center;
+}
+
+.detail-product .cart:active {
+  transform: translate(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
 @media only all and (max-width: 426px) {

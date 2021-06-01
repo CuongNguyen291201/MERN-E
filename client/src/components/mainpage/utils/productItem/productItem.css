@@ -6,10 +6,12 @@
   margin: 10px 0;
   z-index: 999;
   background: white;
+  box-shadow: 0 0 15px #dddddd;
 }
 
 .product_card:hover {
-  box-shadow: 0 0 15px #dddddd;
+  box-shadow: 0 0 15px #a3a2a2;
+  scale: 1.05;
 }
 
 .product_card img {
@@ -23,18 +25,18 @@
   text-align: center;
 }
 
-.product_box h3 {
-  width: 100%;
+.product_box #title {
   margin-top: 10px;
-  text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
   text-transform: capitalize;
   color: #323232;
+  font-weight: 300;
+  font-size: 25px;
 }
 
 .product_box p {
-  color: crimson;
+  color: black;
+  font-weight: 700;
 }
 
 .row_btn {
@@ -50,6 +52,16 @@
   letter-spacing: 2px;
   padding: 6px;
   background: #708990;
-  border-radius: 2px;
+  border-radius: 5px;
   font-size: 17px;
+  display: inline-block;
+}
+
+.row_btn a:hover {
+  transform: translateY(-2px);
+  background: #94acb3;
+}
+
+.row_btn a:active {
+  transform: translateY(-1px);
 }

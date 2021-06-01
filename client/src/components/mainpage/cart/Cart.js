@@ -123,7 +123,7 @@ const Cart = () => {
           <p>{infor[2]}</p>
         </div>
         <div className="payment">
-          <p>Subtotal: ${total}</p>
+          <p>Subtotal: <span>${total}</span></p>
           <p>Total: <span>${total}</span></p>
         </div>
         <PaypalButton 

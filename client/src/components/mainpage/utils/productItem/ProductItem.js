@@ -16,7 +16,7 @@ const ProductItem = ({product}) => {
             <img src={product.images.url} alt=""/>
 
             <div className="product_box">
-              <h3 title={product.title}>{product.title}</h3>
+              <p id="title" title={product.title}>{product.title}</p>
               <p>${product.price}</p>
             </div>
           </Link>

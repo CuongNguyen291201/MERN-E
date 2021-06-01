@@ -13,7 +13,7 @@
   background: white;   
   position: relative;
   transform: scaleY(0.98);
-  margin: 0 auto;
+  margin: 0 auto 20px;
   overflow: hidden;
   width: 70%;
   display: flex;
@@ -88,6 +88,15 @@
   margin: 20px 0;
   padding: 5px 0 0 10px;
   text-align: left;
+}
+
+.payment p:first-child span {
+  font-size: 20px;
+  color: black;
+}
+
+.payment p:last-child span {
+  font-size: 30px;
 }
 
 .payment-button {

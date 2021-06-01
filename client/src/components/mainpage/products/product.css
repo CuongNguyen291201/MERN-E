@@ -10,10 +10,15 @@
   padding: 10px;
 }
 
+.filter-products div {
+  display: flex;
+  flex-direction: column;
+}
+
 .filter-products select {
   outline: none;
   border-radius: 5px;
-  width: 90%;
+  width: 100%;
   padding: 5px;
   border: 1px solid lightblue;
 }
@@ -27,7 +32,7 @@
 .products {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   justify-items: center;
   margin: 20px 0;
   overflow: hidden;
@@ -71,6 +76,7 @@
     width: 100%;
     display: flex;
     padding: 10px;
+    justify-content: space-around;
   }
   .sort {
     margin: 0 0 0 20px;
@@ -83,6 +89,18 @@
 @media only all and (max-width: 426px) {
   .product-all button {
     left: 36%;
+  }
+}
+
+@media only all and (max-width: 320px) {
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media only all and (min-width: 2560px) {
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
 }
 
