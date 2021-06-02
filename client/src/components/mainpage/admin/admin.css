@@ -119,7 +119,6 @@
 main {
     margin-top: 60px;
     background: #f1f5f9;
-    min-height: 90vh;
     padding: 1rem 3rem;
 }
 
@@ -234,6 +233,14 @@ main {
     background: #027581;
     color: white;
     border: none;
+}
+
+.activity-card button:hover {
+    transform: translateY(-2px);
+}
+
+.activity-card button:active {
+  transform: translateY(-1px);
 }
 
 th, td {
@@ -382,6 +389,12 @@ tbody tr:nth-child(even) {
     }
 }
 
+@media only screen and (max-width: 426px) {
+    .activity-card button {
+        margin-top: 3px;
+    }
+}
+
 /* Create Product */
 .create-product {
     width: 100%;
@@ -414,7 +427,7 @@ tbody tr:nth-child(even) {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: -20%;
+    top: -10%;
     left: 0;
     background: white;
     color: rgb(250, 200, 107);

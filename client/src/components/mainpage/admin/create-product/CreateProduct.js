@@ -249,8 +249,8 @@ const CreateProduct = () => {
                           {product.category}
                         </td>
                         <td>
-                          <Link to={`/admin/edit-product/${product._id}`} style={{marginRight: '5px'}}>Edit</Link>
-                          <Link to="/admin" onClick={() => deleteProduct(product._id, product.images.public_id)}>Delete</Link>
+                          <Link to="/admin" onClick={() => deleteProduct(product._id, product.images.public_id)}><button>Delete</button></Link>
+                          <Link to={`/admin/edit-product/${product._id}`}><button>Edit</button></Link>
                         </td>
                       </tr>
                     ))

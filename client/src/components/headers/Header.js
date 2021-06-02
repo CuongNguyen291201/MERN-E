@@ -2,13 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-import './header.css';
 import { GlobalState } from '../../GlobalState';
 import Logo from './icon/camera.png';
 
 const Header = () => {
   const state = useContext(GlobalState);
-  const [categories] = state.categoryAPI.categories;
   const [isLogged] = state.userAPI.isLogged;
   const [isAdmin] = state.userAPI.isAdmin;
   const [cart] = state.userAPI.cart;
@@ -53,7 +51,6 @@ const Header = () => {
               isLogged 
               ? 
               <>
-                <li><Link to="/">User</Link></li>
                 <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
               </> 
               :
@@ -89,7 +86,6 @@ const Header = () => {
                 isLogged 
                 ? 
                 <>
-                  <li><Link to="/">User</Link></li>
                   <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
                 </>
                 : 
@@ -115,7 +111,7 @@ const Header = () => {
           <Link to="/"><img src={Logo} alt="" className="logo" /></Link>
 
           <div className="menu_bars">
-            <label htmlFor="nav_mobile-category" className="menu_bars-category"><i className="fas fa-bars"></i> All Categories</label>
+            <label htmlFor="nav_mobile-category" className="menu_bars-category"><i className="fas fa-bars"></i> Category</label>
             <input type="checkbox" name="" id="nav_mobile-category" className="nav_category" />      
             <label htmlFor="nav_mobile-category" className="nav__overlay-cate"></label> 
 
@@ -125,14 +121,9 @@ const Header = () => {
                 <label htmlFor="nav_mobile-category"><i className="fas fa-times"></i></label>
               </div>
               <div className="nav_categories-item">
-                <h5><i className="fas fa-th-large" style={{ color: '#03B9B0'}}></i> Category</h5>
-                <ul className="nav_category-list"   >
-                  {
-                    categories.map(category => (
-                      <Link to="/products" key={category._id}><li className="nav_category-item"><label htmlFor="nav_mobile-category">{category.name}</label></li></Link>
-                    ))
-                  }
-                </ul>
+                <h5><Link to="/products"><i className="fas fa-th-large"></i> Products</Link></h5>
+                <h5><Link to="/"><i className="fas fa-th-large"></i> Location Store</Link></h5>
+                <h5><Link to="/"><i className="fas fa-th-large"></i> Company</Link></h5>
               </div>
             </nav>
           </div>
@@ -150,7 +141,7 @@ const Header = () => {
 
           <div className="user-cart">
             <Link to="/cart">
-              <i className="fas fa-shopping-cart cart-number"></i>
+              <i className="fas fa-shopping-cart"></i>
             </Link>
             <span>{cart.length}</span>
           </div>

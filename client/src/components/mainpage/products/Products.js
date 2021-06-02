@@ -10,7 +10,6 @@ const Products = () => {
   const [sort, setSort] = state.productsAPI.sort;
   const [page, setPage] = state.productsAPI.page;
   const [result] = state.productsAPI.result;
-  
   const [categories] = state.categoryAPI.categories;
 
   useEffect(() => {
@@ -58,7 +57,7 @@ const Products = () => {
         </div>
       </div>
       {
-        result < page * 9 ? ""
+        result <= page * 9 ? ""
         : <button onClick={() => setPage(page+1)}>Load More</button>
       }
     </div>
