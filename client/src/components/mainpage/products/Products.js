@@ -57,7 +57,7 @@ const Products = () => {
         </div>
       </div>
       {
-        result <= page * 9 ? ""
+        result < page * 9 ? ""
         : <button onClick={() => setPage(page+1)}>Load More</button>
       }
     </div>
