@@ -1,11 +1,17 @@
 # MERN-E
 
 Ecommerce website built with the MERN stack with React Context API for state management, pure CSS for style
+
 Install dependencies for server
+
 `npm install`
+
 Install dependencies for client
+
 cd client --> `npm install`
+
 Connect to your mongodb and add info in .env
+
 Add your paypal client id in client/src/components/mainpage/cart/PaypalButton.js
 
 Run project:
